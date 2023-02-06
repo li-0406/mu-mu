@@ -23,7 +23,7 @@ git commit -m 'deploy'
 # if you are deploying to https://cr870406.github.io
 # git push -f git@github.com:cr870406/cr870406.github.io.git main
 
-# if you are deploying to https://cr870406.github.io/Mu-mu-wood-furniture
-git push -f git@github.com:cr870406/mu-wood-furniture.git main:gh-pages
+# if you are deploying to https://cr870406.github.io/mu-furniture
+git push -f git@github.com:cr870406/mu-furniture.git main:gh-pages
 
 cd -
