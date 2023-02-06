@@ -1,17 +1,22 @@
 <script setup></script>
 
 <template>
-  <header class="d-flex justify-content-between">
+  <header
+    class="d-flex justify-content-between"
+    data-aos="fade-down"
+    data-aos-easing="ease-out"
+    data-aos-duration="2000"
+  >
     <a href="#"
       ><img src="../assets/logo.png" alt="" class="w-100 h-100 ps-4"
     /></a>
     <div class="pc">
       <ul class="d-flex list-unstyled">
         <li>
-          <a href="">首頁</a>
+          <router-link to="/">首頁</router-link>
         </li>
         <li>
-          <a href="">產品系列</a>
+          <router-link to="/product">產品系列</router-link>
         </li>
         <li>
           <a href="">靈感</a>

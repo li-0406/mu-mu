@@ -13,8 +13,23 @@ onMounted(() => {
   <!-- banner -->
   <div class="position-relative banner d-flex">
     <div class="">
-      <img src="../assets/homepage/desktop_kv.png" class="w-100" />
-      <div class="position-absolute bannerText">
+      <img
+        src="../assets/homepage/desktop_kv.png"
+        class="w-100"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease"
+        data-aos-offset="0"
+        data-aos-duration="2000"
+        data-aos-once="true"
+      />
+      <div
+        class="position-absolute bannerText"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-offset="0"
+        data-aos-duration="3000"
+        data-aos-once="true"
+      >
         <h1 class="fs-2 mb-5 lh-base fw-light">
           將設計融於人性<br />
           將家居帶入悠閒自在的情境
@@ -176,12 +191,19 @@ onMounted(() => {
   <!-- classic -->
 
   <div class="container classic">
-    <div class="row">
+    <div class="row overflow-hidden">
       <div class="col-12">
         <h1 class="fs-1 mb-2">classic</h1>
         <h2 class="fs-3 mb-4">經典系列</h2>
       </div>
-      <div class="col-12 col-sm-4">
+      <div
+        class="col-12 col-sm-4"
+        data-aos="fade-right"
+        data-aos-offset="0"
+        data-aos-easing="ease-in-out"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         <div class="position-relative classicPic">
           <img src="../assets/homepage/cabinet.png" class="w-100" />
           <a
@@ -193,7 +215,14 @@ onMounted(() => {
           </a>
         </div>
       </div>
-      <div class="col-12 col-sm-8 d-flex align-items-center">
+      <div
+        class="col-12 col-sm-8 d-flex align-items-center"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-offset="0"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         <div class="classicText w-100 py-3">
           <h2 class="fw-light">
             櫃子11&emsp;<span class="float-end float-sm-none">CABINET</span>
@@ -201,7 +230,14 @@ onMounted(() => {
           <h4>原木系列/空間必備</h4>
         </div>
       </div>
-      <div class="col-12 col-sm-4 order-1 order-sm-2">
+      <div
+        class="col-12 col-sm-4 order-1 order-sm-2"
+        data-aos="fade-left"
+        data-aos-offset="0"
+        data-aos-easing="ease-in-out"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         <div class="position-relative classicPic">
           <img src="../assets/homepage/cabinet.png" class="w-100" />
           <a
@@ -213,7 +249,14 @@ onMounted(() => {
           </a>
         </div>
       </div>
-      <div class="col-12 col-sm-8 d-flex align-items-center order-2 order-sm-1">
+      <div
+        class="col-12 col-sm-8 d-flex align-items-center order-2 order-sm-1"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-offset="0"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         <div class="classicTextLeft w-100 py-3">
           <h2 class="fw-light">
             櫃子&emsp;<span class="float-end float-sm-none">CABINET</span>
@@ -221,7 +264,14 @@ onMounted(() => {
           <h4>原木系列/空間必備</h4>
         </div>
       </div>
-      <div class="col-12 col-sm-4 order-3">
+      <div
+        class="col-12 col-sm-4 order-3"
+        data-aos="fade-right"
+        data-aos-offset="0"
+        data-aos-easing="ease-in-out"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         <div class="position-relative classicPic">
           <img src="../assets/homepage/cabinet.png" class="w-100" />
           <a
@@ -233,7 +283,14 @@ onMounted(() => {
           </a>
         </div>
       </div>
-      <div class="col-12 col-sm-8 d-flex align-items-center order-4">
+      <div
+        class="col-12 col-sm-8 d-flex align-items-center order-4"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        data-aos-offset="0"
+        data-aos-duration="1500"
+        data-aos-once="true"
+      >
         <div class="classicText w-100 pt-3">
           <h2 class="fw-light">
             櫃子&emsp;<span class="float-end float-sm-none">CABINET</span>

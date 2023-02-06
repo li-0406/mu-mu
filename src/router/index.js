@@ -9,9 +9,35 @@ const router = createRouter({
       component: HomePage,
     },
     {
-      path: "/about",
-      name: "about",
-      component: () => import("../views/HomePage.vue"),
+      path: "/product",
+      name: "product",
+      component: () => import("../views/Products.vue"),
+      children: [
+        {
+          path: "/product",
+          component: () => import("../views/productBanner/table-banner.vue"),
+        },
+        {
+          path: "sofa",
+          component: () => import("../views/productBanner/sofa-banner.vue"),
+        },
+        {
+          path: "liv",
+          component: () => import("../views/productBanner/liv-banner.vue"),
+        },
+        {
+          path: "bed",
+          component: () => import("../views/productBanner/bed-banner.vue"),
+        },
+        {
+          path: "chair",
+          component: () => import("../views/productBanner/chair-banner.vue"),
+        },
+        {
+          path: "small",
+          component: () => import("../views/productBanner/small-banner.vue"),
+        },
+      ],
     },
   ],
 });
