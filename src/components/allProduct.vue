@@ -1,35 +1,60 @@
 <script setup>
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
+const { like, addCart } = useProductsSeries();
 const { product } = storeToRefs(useProductsSeries());
 </script>
 
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-4" v-for="item in product" :key="item.id">
-        <div class="productPic p-5 pb-2">
-          <a href="">
-            <img :src="item.imageUrl" class="w-100" />
-          </a>
-        </div>
-        <div class="productText d-flex position-relative">
-          <div class="name ms-5">
-            <h4 class="fs-5">{{ item.title }}</h4>
-            <h4 class="fs-5">NT${{ item.price }}</h4>
+  <div class="back pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-4" v-for="item in product" :key="item.id">
+          <div class="productPic p-5 pb-2">
+            <router-link :to="`/${item.id}`">
+              <img :src="item.imageUrl" class="w-100" />
+            </router-link>
           </div>
-          <button
-            class="position-absolute top-50 end-0 translate-middle-y me-5 fs-6 p-2 rounded-3"
-          >
-            加入購物車
-          </button>
+          <div class="productText d-flex position-relative">
+            <div class="name ms-5">
+              <h4 class="fs-5">{{ item.title }}</h4>
+              <h4 class="fs-5">NT${{ item.price }}</h4>
+            </div>
+            <button
+              class="position-absolute top-50 end-0 translate-middle-y me-5 fs-6 p-2 rounded-3"
+              @click="addCart(item)"
+            >
+              加入購物車
+            </button>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
+  <!-- 彈出視窗 -->
+  <div
+    class="toast align-items-center position-fixed top-0 start-50 translate-middle-x mt-5"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+    id="toast"
+  >
+    <div class="d-flex">
+      <div class="toast-body fw-light">已加入購物車</div>
+      <button
+        type="button"
+        class="btn-close me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+.back {
+  background-color: #fff9f3;
+}
 .productPic {
   a {
     display: block;
@@ -54,5 +79,10 @@ const { product } = storeToRefs(useProductsSeries());
       background-color: rgba(134, 80, 49, 0.09);
     }
   }
+}
+.toast {
+  z-index: 3;
+  background-color: #ffffff;
+  border: none;
 }
 </style>

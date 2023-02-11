@@ -1,4 +1,12 @@
-<script setup></script>
+<script setup>
+import { onBeforeMount } from "@vue/runtime-core";
+import allProduct from "../../components/allProduct.vue";
+import { useProductsSeries } from "../../stores/productSeries.js";
+const { changeProducts } = useProductsSeries();
+onBeforeMount(() => {
+  changeProducts(6);
+});
+</script>
 
 <template>
   <div class="container banner">
@@ -21,6 +29,7 @@
       </div>
     </div>
   </div>
+  <allProduct />
 </template>
 
 <style lang="scss" scoped>

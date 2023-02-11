@@ -2,9 +2,11 @@
 import { onMounted } from "@vue/runtime-core";
 import allproducts from "../components/allProduct.vue";
 import { useProductsSeries } from "../stores/productSeries.js";
-const { changeProducts, borderLine } = useProductsSeries();
+import { storeToRefs } from "pinia";
+const { changeProducts, borderLine, search } = useProductsSeries();
+const { searchText, index } = storeToRefs(useProductsSeries());
 onMounted(() => {
-  changeProducts(1);
+  changeProducts(index.value);
 });
 </script>
 <template>
@@ -22,8 +24,13 @@ onMounted(() => {
           <input
             type="text"
             class="border-end-0 border border border-secondary"
+            @keyup.enter="search"
+            v-model="searchText"
           />
-          <button class="border-start-0 border border border-secondary">
+          <button
+            class="border-start-0 border border border-secondary"
+            @click.prevent="search"
+          >
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </form>
@@ -91,7 +98,7 @@ onMounted(() => {
   <!-- banner -->
   <router-view></router-view>
   <!-- product -->
-  <allproducts />
+  <!-- <allproducts /> -->
 </template>
 <style scoped lang="scss">
 // header

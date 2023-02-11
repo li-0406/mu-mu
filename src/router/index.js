@@ -39,6 +39,34 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/:id",
+      name: "details",
+      component: () => import("../views/productDetails.vue"),
+    },
+    {
+      path: "/checkout",
+      name: "checkout",
+      component: () => import("../views/checkout.vue"),
+      children: [
+        {
+          path: "/checkout",
+          component: () => import("../views/checkout/checkoutOne.vue"),
+        },
+        {
+          path: "write",
+          component: () => import("../views/checkout/checkoutTwo.vue"),
+        },
+        {
+          path: "orderCheck",
+          component: () => import("../views/checkout/checkoutThree.vue"),
+        },
+        {
+          path: "finish",
+          component: () => import("../views/checkout/checkoutFinish.vue"),
+        },
+      ],
+    },
   ],
 });
 
