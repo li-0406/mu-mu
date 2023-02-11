@@ -8,8 +8,9 @@ import router from "@/router";
 const { plus, delCart } = usecheckOut();
 const { cartData, totlaPrice, userData } = storeToRefs(usecheckOut());
 const onSubmit = () => {
-  // sessionStorage.setItem("userData", JSON.stringify(userData.value));
+  sessionStorage.setItem("userData", JSON.stringify(userData.value));
   router.push("/checkout/orderCheck");
+  console.log(userData.value);
 };
 </script>
 <template>
@@ -113,10 +114,10 @@ const onSubmit = () => {
               v-model="userData.pay"
             >
               <option selected>信用卡</option>
-              <option value="1">ATM付款/銀行轉帳</option>
-              <option value="2">LINE Pay</option>
-              <option value="3">貨到付款</option>
-              <option value="4">店面取貨</option>
+              <option value="ATM付款/銀行轉帳">ATM付款/銀行轉帳</option>
+              <option value="LINE Pay">LINE Pay</option>
+              <option value="貨到付款">貨到付款</option>
+              <option value="店面取貨">店面取貨</option>
             </select>
           </div>
         </div>
