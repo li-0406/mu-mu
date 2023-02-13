@@ -16,35 +16,25 @@ const onSubmit = () => {
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 py-5">
-        <div class="step d-flex position-relative">
-          <div class="one position-relative">
-            <span
-              class="position-absolute top-50 start-50 translate-middle fs-5 fw-bolder"
-              >1</span
-            >
+      <div class="col-12 py-5 d-flex justify-content-center">
+        <div class="text-center">
+          <div class="step line act">
+            <span class="schedule act">
+              <span class="text">1</span>
+            </span>
+            <span class="d-block">購物車</span>
           </div>
-          <div class="out position-relative">
-            <div
-              class="line lineOne position-absolute top-50 start-50 translate-middle"
-            ></div>
+          <div class="step line">
+            <span class="schedule act">
+              <span class="text">2</span>
+            </span>
+            <span class="d-block">填寫資料</span>
           </div>
-          <div class="two position-relative">
-            <span
-              class="position-absolute top-50 start-50 translate-middle fs-5 fw-bolder"
-              >2</span
-            >
-          </div>
-          <div class="out position-relative">
-            <div
-              class="line position-absolute top-50 start-50 translate-middle"
-            ></div>
-          </div>
-          <div class="three position-relative">
-            <span
-              class="position-absolute top-50 start-50 translate-middle fs-5 fw-bolder"
-              >3</span
-            >
+          <div class="step">
+            <span class="schedule">
+              <span class="text">3</span>
+            </span>
+            <span class="d-block">訂單確認</span>
           </div>
         </div>
       </div>
@@ -139,61 +129,69 @@ const onSubmit = () => {
   </div>
 </template>
 <style scoped lang="scss">
+@mixin sm {
+  @media (max-width: 667px) {
+    @content;
+  }
+}
 .step {
-  left: 25%;
-  .one,
-  .two,
-  .three {
-    width: 0;
-    height: 0;
-    border: 2px solid #d3d3d3;
-    background-color: transparent;
-    padding: 0 3% 3% 0;
-    border-radius: 20px;
-    span {
-      color: #d3d3d3;
-    }
+  display: inline-block;
+  width: 240px;
+  max-width: 33%;
+  position: relative;
+  .text {
+    z-index: 1;
+    font-weight: bold;
+    color: #fff;
+    font-size: 14px;
+  }
+  .schedule {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    padding: 0;
     &::after {
-      content: "購物車";
+      content: " ";
+      border-radius: 15px;
+      transform: translate(-50%, -50%);
+      background-color: #cccccc;
+      height: 30px;
+      width: 30px;
+      left: 50%;
+      top: 50%;
       position: absolute;
-      width: 60px;
-      bottom: -25px;
-      left: -3px;
+      z-index: 0;
     }
   }
-  .two::after {
-    content: "填寫資料";
-    left: -10px;
+  .act::after {
+    background-color: #865031;
   }
-  .three::after {
-    content: "訂單確認";
-    left: -10px;
+}
+.line {
+  display: inline-block;
+  width: 240px;
+  max-width: 33%;
+  position: relative;
+  &::before {
+    content: " ";
+    background-color: #cccccc;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    margin-top: -1px;
+    z-index: 0;
   }
-  .one,
-  .two {
-    border: 2px solid #865031;
-    span {
-      color: #865031;
-    }
-  }
-  .out {
-    width: 0;
-    height: 0;
-    padding: 0 20% 3% 0;
-    background-color: transparent;
-    overflow: hidden;
-    .line {
-      width: 500px;
-      height: 2px;
-      background-color: #d3d3d3;
-    }
-    .lineOne {
-      background-color: #865031;
-    }
-  }
+}
+.act::before {
+  background-color: #865031;
 }
 .box {
   width: 40%;
+  @include sm {
+    width: 80%;
+  }
   .enter {
     width: 100%;
     padding: 5px 10px;
@@ -219,7 +217,7 @@ textarea {
     color: #fff;
     padding: 8px;
     border-radius: 12px;
-    width: 20%;
+    width: 25%;
     font-size: 16px;
     transition: 0.3s;
     &:hover {

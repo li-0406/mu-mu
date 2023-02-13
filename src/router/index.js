@@ -67,6 +67,17 @@ const router = createRouter({
         },
       ],
     },
+    {
+      path: "/inspiration",
+      name: "inspiration",
+      component: () => import("../views/inspiration.vue"),
+      children: [
+        {
+          path: "/inspiration",
+          component: () => import("../views/inspirationPage.vue"),
+        },
+      ],
+    },
   ],
 });
 

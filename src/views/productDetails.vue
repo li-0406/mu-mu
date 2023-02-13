@@ -64,7 +64,7 @@ const plus = (item) => {
             </ol>
           </nav>
         </div>
-        <div class="col-6 pe-5">
+        <div class="col-12 col-md-6 pe-md-5">
           <div class="pic">
             <img :src="mainPic" class="w-100" />
           </div>
@@ -80,7 +80,7 @@ const plus = (item) => {
             </div>
           </div>
         </div>
-        <div class="col-6 ps-5">
+        <div class="col-12 col-md-6 ps-md-5">
           <h3>{{ productPage.title }}</h3>
           <h3 class="mb-4 fs-4">NT${{ productPage.price }}</h3>
           <h3 style="white-space: pre-wrap" class="fs-5 lh-base fw-light">
@@ -89,42 +89,54 @@ const plus = (item) => {
           <p style="white-space: pre-wrap" class="fs-6 mt-4 fw-light">
             {{ productPage.description }}
           </p>
-          <div class="input-group my-4">
-            <span class="rounded-circle minus"
-              ><button type="button" class="btn" @click="plus(`minus`)">
-                <i class="fa fa-minus"></i></button
-            ></span>
+          <div class="input-group my-4 d-flex justify-content-center">
+            <button
+              type="button"
+              class="btn rounded-circle minus"
+              @click="plus(`minus`)"
+            >
+              <i class="fa fa-minus"></i>
+            </button>
             <input
-              class="text"
+              class="text w-25"
               type="number"
               min="1"
               v-model="productQuantity"
             />
-            <span class="rounded-circle plus"
-              ><button type="button" class="btn" @click="plus(`plus`)">
-                <i class="fa fa-plus"></i></button
-            ></span>
+            <button
+              type="button"
+              class="btn rounded-circle plus"
+              @click="plus(`plus`)"
+            >
+              <i class="fa fa-plus"></i>
+            </button>
           </div>
-          <button
-            type="button"
-            class="put buy me-1"
-            @click="buy(productPage, productQuantity)"
-          >
-            直接購買
-          </button>
-          <button
-            type="button"
-            class="put cart ms-1"
-            @click="addCart(productPage, productQuantity)"
-          >
-            加入購物車
-          </button>
+          <div class="d-flex justify-content-evenly">
+            <button
+              type="button"
+              class="put buy me-1"
+              @click="buy(productPage, productQuantity)"
+            >
+              直接購買
+            </button>
+            <button
+              type="button"
+              class="put cart ms-1"
+              @click="addCart(productPage, productQuantity)"
+            >
+              加入購物車
+            </button>
+          </div>
         </div>
         <div class="col-12 pt-5">
           <h4 class="mb-0 likeTitle">You may also like</h4>
         </div>
-        <div class="col-3" v-for="item in alosLike" :key="item.id">
-          <div class="text-center p-5">
+        <div
+          class="col-12 col-sm-6 col-md-3"
+          v-for="item in alosLike"
+          :key="item.id"
+        >
+          <div class="text-center p-sm-3">
             <div class="like" role="button">
               <a @click="details(item.id)">
                 <img :src="item.imageUrl" class="w-100" />
@@ -167,7 +179,7 @@ const plus = (item) => {
 }
 .put {
   padding: 10px 0;
-  width: 49%;
+  width: 45%;
   font-size: 16px;
   border-radius: 20px;
 }
@@ -198,7 +210,7 @@ const plus = (item) => {
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  margin-left: 32%;
+  // margin-left: 32%;
   .text {
     border: none;
     background-color: transparent;

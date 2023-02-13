@@ -19,11 +19,11 @@ onMounted(() => {
           <p class="fs-3">產品系列</p>
         </div>
         <form
-          class="search d-flex position-absolute top-50 end-0 translate-middle-y"
+          class="search d-flex position-absolute top-50 end-0 translate-middle-y d-none d-lg-block"
         >
           <input
             type="text"
-            class="border-end-0 border border border-secondary"
+            class="border-end-0 border border border-secondary w-75"
             @keyup.enter="search"
             v-model="searchText"
           />
@@ -36,10 +36,12 @@ onMounted(() => {
         </form>
       </div>
       <div class="col-12 pt-3">
-        <ul class="list-unstyled d-flex justify-content-evenly fs-6">
+        <ul
+          class="list-unstyled d-flex justify-content-md-evenly flex-wrap fs-6"
+        >
           <li>
             <router-link
-              class="text-reset text-decoration-none mx-auto"
+              class="text-reset text-decoration-none"
               to="/product/"
               @click="changeProducts(1)"
               :class="borderLine(1)"
@@ -48,7 +50,7 @@ onMounted(() => {
           </li>
           <li>
             <router-link
-              class="text-reset text-decoration-none mx-auto"
+              class="text-reset text-decoration-none"
               to="/product/sofa"
               @click="changeProducts(2)"
               :class="borderLine(2)"
@@ -57,7 +59,7 @@ onMounted(() => {
           </li>
           <li>
             <router-link
-              class="text-reset text-decoration-none mx-auto"
+              class="text-reset text-decoration-none"
               to="/product/liv"
               @click="changeProducts(3)"
               :class="borderLine(3)"
@@ -66,7 +68,7 @@ onMounted(() => {
           </li>
           <li>
             <router-link
-              class="text-reset text-decoration-none mx-auto"
+              class="text-reset text-decoration-none"
               to="/product/bed"
               @click="changeProducts(4)"
               :class="borderLine(4)"
@@ -75,7 +77,7 @@ onMounted(() => {
           </li>
           <li>
             <router-link
-              class="text-reset text-decoration-none mx-auto"
+              class="text-reset text-decoration-none"
               to="/product/chair"
               @click="changeProducts(5)"
               :class="borderLine(5)"
@@ -84,7 +86,7 @@ onMounted(() => {
           </li>
           <li>
             <router-link
-              class="text-reset text-decoration-none mx-auto"
+              class="text-reset text-decoration-none"
               to="/product/small"
               @click="changeProducts(6)"
               :class="borderLine(6)"
@@ -101,6 +103,11 @@ onMounted(() => {
   <!-- <allproducts /> -->
 </template>
 <style scoped lang="scss">
+@mixin mobile {
+  @media (max-width: 667px) {
+    @content;
+  }
+}
 // header
 .header {
   .title {
@@ -126,6 +133,10 @@ onMounted(() => {
     }
   }
   li {
+    @include mobile {
+      width: 33%;
+      text-align: center;
+    }
     .click {
       &::after {
         right: 0%;

@@ -12,12 +12,7 @@ onBeforeMount(() => {
   <div class="container banner">
     <div class="row">
       <div class="col-12">
-        <div class="pic position-relative overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1512972972907-6d71529c5e92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-            class="w-100 position-absolute"
-          />
-        </div>
+        <div class="pic"></div>
       </div>
       <div class="col-12 py-3">
         <h4 class="fs-6 lh-lg">
@@ -33,11 +28,23 @@ onBeforeMount(() => {
 </template>
 
 <style lang="scss" scoped>
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
 .banner {
   .pic {
+    background-image: url("https://images.unsplash.com/photo-1512972972907-6d71529c5e92?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80");
     padding-bottom: 35%;
-    img {
-      bottom: -200px;
+    height: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center -200px;
+    @include mobile {
+      padding-bottom: 50%;
+      background-repeat: repeat;
+      background-position: center;
     }
   }
 }

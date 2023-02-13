@@ -9,19 +9,25 @@ const { product } = storeToRefs(useProductsSeries());
   <div class="back pb-5">
     <div class="container">
       <div class="row">
-        <div class="col-4" v-for="item in product" :key="item.id">
-          <div class="productPic p-5 pb-2">
+        <div
+          class="col-12 col-sm-6 col-md-6 col-lg-4"
+          v-for="item in product"
+          :key="item.id"
+        >
+          <div class="productPic pt-4 p-md-2 pb-2 p-xl-5 pb-xl-2">
             <router-link :to="`/${item.id}`">
               <img :src="item.imageUrl" class="w-100" />
             </router-link>
           </div>
-          <div class="productText d-flex position-relative">
-            <div class="name ms-5">
-              <h4 class="fs-5">{{ item.title }}</h4>
+          <div
+            class="productText d-flex flex-sm-column flex-md-row justify-content-between px-md-2 px-xl-5"
+          >
+            <div class="name">
+              <h4 class="fs-5 fs-sm-1">{{ item.title }}</h4>
               <h4 class="fs-5">NT${{ item.price }}</h4>
             </div>
             <button
-              class="position-absolute top-50 end-0 translate-middle-y me-5 fs-6 p-2 rounded-3"
+              class="rounded-3 px-3 h-50 py-2 my-auto"
               @click="addCart(item)"
             >
               加入購物車

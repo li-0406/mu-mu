@@ -4,20 +4,16 @@ import { usecheckOut } from "../stores/checkOut.js";
 import { storeToRefs } from "pinia";
 const { plus, delCart } = usecheckOut();
 const { cartData, totlaPrice } = storeToRefs(usecheckOut());
-onBeforeMount(() => {
-  // cartData.value = JSON.parse(sessionStorage.getItem("cartList"));
-  // totlaPrice.value = JSON.parse(sessionStorage.getItem("totlaPrice"));
-});
 </script>
 <template>
-  <div class="col-12 pt-2">
+  <div class="col-12 pt-2 d-none d-md-block">
     <table class="table table align-middle" style="border-spacing: 10px">
       <thead>
         <tr>
           <th scope="col">商品資料</th>
           <th scope="col">價格</th>
           <th scope="col" class="text-center">數量</th>
-          <th scope="col" colspan="2">小計</th>
+          <th scope="col" colspan="sm-4">小計</th>
         </tr>
       </thead>
       <tbody>
@@ -64,8 +60,52 @@ onBeforeMount(() => {
       </tbody>
     </table>
   </div>
+  <div class="col-12 border-top d-block d-md-none">
+    <div v-for="item in cartData" :key="item.id" class="pt-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <div
+          class="productPic"
+          :style="{
+            backgroundImage: 'url(' + item.product.imageUrl + ')',
+          }"
+        ></div>
+        <h4 class="fs-6 my-auto ms-3">
+          {{ item.product.title }}
+        </h4>
+        <span @click="delCart(item)">
+          <i class="fa-regular fa-trash-can fa-lg" role="button"></i>
+        </span>
+      </div>
+      <div class="d-flex justify-content-between mt-2 border-bottom">
+        <div class="num">
+          <button class="minus border-0" @click="plus(item, `minus`)">
+            <i class="fa fa-minus text-reset"></i>
+          </button>
+          <input
+            type="number"
+            class="border-0 text-center"
+            v-model="item.qty"
+            @blur="plus(item)"
+          />
+          <button class="plus border-0" @click="plus(item, `plus`)">
+            <i class="fa fa-plus"></i>
+          </button>
+        </div>
+        <h5 class="fs-6">NT${{ item.product.price }}</h5>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between mt-3">
+      <h5>合計：</h5>
+      <h5 class="fw-bold">NT${{ totlaPrice }}</h5>
+    </div>
+  </div>
 </template>
 <style scoped lang="scss">
+@mixin sm {
+  @media (max-width: 667px) {
+    @content;
+  }
+}
 .num {
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -75,10 +115,11 @@ onBeforeMount(() => {
   }
   input {
     width: 15%;
-    // font-size: 18px;
+    @include sm {
+      width: 30%;
+    }
   }
   button {
-    // padding: 10%;
     background: transparent;
   }
 }
@@ -88,5 +129,9 @@ onBeforeMount(() => {
   background-position: center;
   height: 0;
   padding-bottom: 40%;
+  @include sm {
+    width: 20%;
+    padding-bottom: 20%;
+  }
 }
 </style>

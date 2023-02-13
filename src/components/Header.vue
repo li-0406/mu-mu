@@ -50,7 +50,7 @@ document.addEventListener("click", (event) => {
           <router-link to="/product">產品系列</router-link>
         </li>
         <li>
-          <a href="">靈感</a>
+          <router-link to="/inspiration">靈感</router-link>
         </li>
         <li>
           <a href="">品牌理念</a>
@@ -60,15 +60,19 @@ document.addEventListener("click", (event) => {
         </li>
       </ul>
     </div>
-    <div class="pe-3 topCart">
-      <a href="" @click.prevent="open" class=""
-        ><i class="fa-solid fa-cart-shopping fa-xl"></i>
+    <div class="pe-3 topCart d-flex">
+      <a href="" class="d-inline d-lg-none">
+        <i class="fa-solid fa-magnifying-glass fa-xl search"></i>
       </a>
-      <div
-        class="position-absolute mb-0"
-        v-if="cartData && cartData.length > 0"
-      ></div>
-      <a href=""><i class="fa-solid fa-bars fa-xl ms-4 bars"></i></a>
+      <a href="" @click.prevent="open" class="ms-4"
+        ><i class="fa-solid fa-cart-shopping fa-xl"></i>
+        <span
+          class="dot position-absolute"
+          v-if="cartData && cartData.length > 0"
+        ></span>
+      </a>
+
+      <a><i class="fa-solid fa-bars fa-xl bars d-inline d-xl-none ms-4"></i></a>
     </div>
   </header>
   <div
@@ -140,6 +144,11 @@ document.addEventListener("click", (event) => {
     @content;
   }
 }
+@mixin sm {
+  @media (max-width: 576px) {
+    @content;
+  }
+}
 header {
   height: 84px;
   font-size: 16px;
@@ -173,12 +182,6 @@ header {
   }
   a {
     line-height: 84px;
-    .bars {
-      display: none;
-      @include pc {
-        display: inline;
-      }
-    }
   }
   .topCart {
     color: #ffffff;
@@ -187,19 +190,25 @@ header {
 .cart {
   display: none;
   right: 0;
-  z-index: 1;
+  z-index: 3;
   background-color: #ffffff;
   backdrop-filter: blur(5px);
   border-radius: 0 0 8px 8px;
   width: 20%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  @include pc {
+    width: 50%;
+  }
+  @include sm {
+    width: 100%;
+    height: 100vh;
+  }
   .top {
     position: relative;
-    height: 40%;
     padding-bottom: 60px;
     overflow: hidden;
     h4 {
-      font-size: 14px;
+      font-size: 16px;
     }
     &::after {
       content: "";
@@ -209,9 +218,9 @@ header {
       bottom: 0;
     }
     .pic {
-      width: 20%;
+      width: 30%;
       height: 0;
-      padding-bottom: 15%;
+      padding-bottom: 25%;
       overflow: hidden;
     }
   }
@@ -235,13 +244,14 @@ header {
   z-index: 3;
 }
 .topCart {
-  div {
+  .dot {
     top: 35%;
     left: 45%;
     width: 10px;
     height: 10px;
     border-radius: 10px;
     background-color: #dd534a;
+    left: 18px;
   }
 }
 </style>

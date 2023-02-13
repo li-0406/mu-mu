@@ -34,8 +34,8 @@ const backHome = () => {
           <i class="fa-regular fa-circle-check fa-3x"></i>
         </div>
         <div>
-          <h3 class="mb-3 fs-4">謝謝您！您的訂單已經成立！</h3>
-          <h3 class="fs-4">訂單號碼 {{ orderNum }}</h3>
+          <h3 class="mb-3 fs-5">謝謝您！您的訂單已經成立！</h3>
+          <h3 class="fs-5">訂單號碼 {{ orderNum }}</h3>
         </div>
       </div>
       <div class="col-12 d-flex justify-content-center">
@@ -47,7 +47,7 @@ const backHome = () => {
 <style scoped lang="scss">
 button {
   width: 20%;
-  padding: 12px;
+  padding: 6px;
   font-size: 16px;
   border-radius: 12px;
   color: #ffffff;

@@ -7,7 +7,7 @@ const { cartData, totlaPrice } = storeToRefs(usecheckOut());
 onBeforeMount(() => {});
 </script>
 <template>
-  <div class="col-12 pt-2">
+  <div class="col-12 pt-2 d-none d-md-block">
     <table class="table table align-middle" style="border-spacing: 10px">
       <thead>
         <tr>
@@ -40,6 +40,30 @@ onBeforeMount(() => {});
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="col-12 border-top d-block d-md-none">
+    <div v-for="item in cartData" :key="item.id" class="pt-2">
+      <div class="d-flex justify-content-between align-items-center">
+        <div
+          class="productPic"
+          :style="{
+            backgroundImage: 'url(' + item.product.imageUrl + ')',
+          }"
+        ></div>
+        <h4 class="fs-6 my-auto ms-3">
+          {{ item.product.title }}
+        </h4>
+      </div>
+      <div class="d-flex justify-content-between mt-2 border-bottom">
+        <h5 class="fs-6">數量：{{ item.qty }}</h5>
+        <h5 class="fs-6">NT${{ item.product.price }}</h5>
+      </div>
+    </div>
+    <div class="d-flex justify-content-between mt-3">
+      <h5>合計：</h5>
+      <h5 class="fw-bold">NT${{ totlaPrice }}</h5>
+    </div>
   </div>
 </template>
 <style scoped lang="scss">
