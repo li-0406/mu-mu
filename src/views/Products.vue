@@ -1,12 +1,15 @@
 <script setup>
 import { onMounted } from "@vue/runtime-core";
 import allproducts from "../components/allProduct.vue";
+import { useHomePage } from "../stores/homepage.js";
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 const { changeProducts, borderLine, search } = useProductsSeries();
 const { searchText, index } = storeToRefs(useProductsSeries());
+const { check } = useHomePage();
 onMounted(() => {
   changeProducts(index.value);
+  check(2);
 });
 </script>
 <template>

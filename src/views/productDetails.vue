@@ -9,8 +9,6 @@ const { productQuantity, alosLike, productPage, mainPic } = storeToRefs(
 );
 
 onBeforeMount(() => {
-  // productPage.value = JSON.parse(sessionStorage.getItem("product"));
-  // alosLike.value = JSON.parse(sessionStorage.getItem("alosLike"));
   details(useRoute().params.id);
 });
 onMounted(() => {

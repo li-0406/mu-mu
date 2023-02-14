@@ -16,6 +16,10 @@ import "@fortawesome/fontawesome-free/js/all.js";
 
 import "./assets/main.css";
 
+router.afterEach((to, from, next) => {
+  window.scrollTo(0, 0); //切换路由之后滚动条始终在最顶部
+});
+
 import { defineRule, configure } from "vee-validate";
 import AllRules from "@vee-validate/rules";
 Object.keys(AllRules).forEach((rule) => {

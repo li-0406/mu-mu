@@ -71,12 +71,16 @@ const router = createRouter({
       path: "/inspiration",
       name: "inspiration",
       component: () => import("../views/inspiration.vue"),
-      children: [
-        {
-          path: "/inspiration",
-          component: () => import("../views/inspirationPage.vue"),
-        },
-      ],
+    },
+    {
+      path: "/inside/:id",
+      name: "inside",
+      component: () => import("../views/inspirationInside.vue"),
+    },
+    {
+      path: "/brandConcept",
+      name: "brandConcept",
+      component: () => import("../views/brandConcept.vue"),
     },
   ],
 });

@@ -1,16 +1,26 @@
 <script setup>
-import { onMounted } from "@vue/runtime-core";
-import allproducts from "../components/allProduct.vue";
-import { useProductsSeries } from "../stores/productSeries.js";
-import { storeToRefs } from "pinia";
-const { changeProducts, borderLine, search } = useProductsSeries();
-const { searchText, index } = storeToRefs(useProductsSeries());
+import inspirationPage from "../components/inspirationPage.vue";
+import { ref, onMounted } from "@vue/runtime-core";
+import { useHomePage } from "../stores/homepage.js";
+const { check } = useHomePage();
+const back = ref("gray");
+window.addEventListener("scroll", function (e) {
+  if (window.scrollY > 2800) {
+    back.value = "lightBlue";
+  } else if (window.scrollY > 1900) {
+    back.value = "darkBlue";
+  } else if (window.scrollY > 1000) {
+    back.value = "brown";
+  } else if (window.scrollY < 500) {
+    back.value = "gray";
+  }
+});
 onMounted(() => {
-  changeProducts(index.value);
+  check(3);
 });
 </script>
 <template>
-  <div class="back">
+  <div :class="back" id="top">
     <div class="container header">
       <div class="row">
         <div class="col-12 d-flex position-relative pt-5">
@@ -33,7 +43,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="container-fluid">
-      <router-view></router-view>
+      <inspirationPage />
     </div>
   </div>
   <!-- header -->
@@ -44,8 +54,35 @@ onMounted(() => {
     @content;
   }
 }
-.back {
-  background-color: #c1c1c1;
+@mixin pc {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+.gray {
+  background-color: #828282;
+  transition: 1s;
+  @include pc {
+    background-color: #7f5115;
+  }
+}
+.brown {
+  background-color: #7f5115;
+  transition: 1s;
+}
+.darkBlue {
+  background-color: #1b2834;
+  transition: 1s;
+  @include pc {
+    background-color: #7f5115;
+  }
+}
+.lightBlue {
+  background-color: #57757b;
+  transition: 1s;
+  @include pc {
+    background-color: #7f5115;
+  }
 }
 // header
 .header {
@@ -93,6 +130,9 @@ onMounted(() => {
         bottom: -5px;
         border-bottom: 2px solid #865031;
         transition: 0.6s;
+        @include pc {
+          display: none;
+        }
       }
       &:hover::after {
         right: 0%;

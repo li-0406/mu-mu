@@ -2,10 +2,11 @@
 import { onMounted } from "@vue/runtime-core";
 import { storeToRefs } from "pinia";
 import { useHomePage } from "../stores/homepage.js";
-const { changeSpace, checkSpace } = useHomePage();
+const { changeSpace, checkSpace, check } = useHomePage();
 const { spaceImg, spaceImgs } = storeToRefs(useHomePage());
 onMounted(() => {
   changeSpace(1);
+  check(1);
 });
 </script>
 
@@ -34,10 +35,10 @@ onMounted(() => {
           將設計融於人性<br />
           將家居帶入悠閒自在的情境
         </h1>
-        <a
-          href=""
+        <router-link
+          to="/product"
           class="text-decoration-none rounded-pill p-3 pe-5 ps-5 fs-4 bannerBtn"
-          >挑選產品</a
+          >挑選產品</router-link
         >
       </div>
     </div>

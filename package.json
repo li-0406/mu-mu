@@ -13,6 +13,7 @@
     "@vee-validate/rules": "^4.7.4",
     "aos": "^3.0.0-beta.6",
     "jquery": "^3.6.3",
+    "locomotive-scroll": "^4.1.4",
     "pinia": "^2.0.28",
     "popper.js": "^1.16.1",
     "vee-validate": "^4.7.4",

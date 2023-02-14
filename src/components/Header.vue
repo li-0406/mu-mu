@@ -3,8 +3,9 @@ import { ref } from "@vue/reactivity";
 import { useHomePage } from "../stores/homepage.js";
 import { storeToRefs } from "pinia";
 import { onMounted } from "@vue/runtime-core";
-const { getCart, putCart, delCart, checkout } = useHomePage();
-const { cartData, totlaPrice, on } = storeToRefs(useHomePage());
+const { getCart, putCart, delCart, checkout, check, bottomLine } =
+  useHomePage();
+const { cartData, totlaPrice, on, num } = storeToRefs(useHomePage());
 const openCart = ref("");
 const open = () => {
   on.value = !on.value;
@@ -14,20 +15,20 @@ const open = () => {
     openCart.value = "colseCart";
   }
 };
-onMounted(() => {
-  getCart();
-});
 document.addEventListener("click", (event) => {
-  var cc = document.querySelector(".cart");
-  var cDom = document.querySelector(".topCart");
-  var tDom = event.target;
+  var cart = document.querySelector(".cart");
+  var topCart = document.querySelector(".topCart");
+  var out = event.target;
   if (
-    !(cDom == tDom || cDom.contains(tDom)) ||
-    cc == tDom ||
-    cc.contains(tDom)
+    !(topCart == out || topCart.contains(out)) ||
+    cart == out ||
+    cart.contains(out)
   ) {
     on.value = false;
   }
+});
+onMounted(() => {
+  getCart();
 });
 </script>
 
@@ -44,19 +45,33 @@ document.addEventListener("click", (event) => {
     <div class="pc">
       <ul class="d-flex list-unstyled">
         <li>
-          <router-link to="/">首頁</router-link>
+          <router-link to="/" :class="bottomLine(1)" @click="check(1)"
+            >首頁</router-link
+          >
         </li>
         <li>
-          <router-link to="/product">產品系列</router-link>
+          <router-link to="/product" :class="bottomLine(2)" @click="check(2)"
+            >產品系列</router-link
+          >
         </li>
         <li>
-          <router-link to="/inspiration">靈感</router-link>
+          <router-link
+            to="/inspiration"
+            :class="bottomLine(3)"
+            @click="check(3)"
+            >靈感</router-link
+          >
         </li>
         <li>
-          <a href="">品牌理念</a>
+          <router-link
+            to="/brandConcept"
+            :class="bottomLine(4)"
+            @click="check(4)"
+            >品牌理念</router-link
+          >
         </li>
         <li>
-          <a href="">常見問題</a>
+          <a href="" :class="bottomLine(5)" @click="check(5)">常見問題</a>
         </li>
       </ul>
     </div>
@@ -71,7 +86,6 @@ document.addEventListener("click", (event) => {
           v-if="cartData && cartData.length > 0"
         ></span>
       </a>
-
       <a><i class="fa-solid fa-bars fa-xl bars d-inline d-xl-none ms-4"></i></a>
     </div>
   </header>
@@ -157,34 +171,40 @@ header {
     @include pc {
       display: none;
     }
-  }
-  li {
-    a {
-      color: #352b25;
-      line-height: 84px;
-      text-decoration: none;
-      margin-right: 80px;
-      position: relative;
-      &::after {
-        content: " ";
-        position: absolute;
-        right: 50%;
-        left: 50%;
-        bottom: -5px;
-        border-bottom: 2px solid #865031;
-        transition: 0.6s;
+    li {
+      a {
+        color: #352b25;
+        line-height: 84px;
+        text-decoration: none;
+        margin-right: 80px;
+        position: relative;
+        &::after {
+          content: " ";
+          position: absolute;
+          right: 50%;
+          left: 50%;
+          bottom: -5px;
+          border-bottom: 2px solid #865031;
+          transition: 0.6s;
+        }
+        &:hover::after {
+          right: 0%;
+          left: 0%;
+        }
       }
-      &:hover::after {
-        right: 0%;
+    }
+    .click {
+      &::after {
         left: 0%;
+        right: 0%;
       }
     }
   }
-  a {
-    line-height: 84px;
-  }
   .topCart {
     color: #ffffff;
+    a {
+      line-height: 84px;
+    }
   }
 }
 .cart {

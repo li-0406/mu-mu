@@ -11,6 +11,7 @@ export const useHomePage = defineStore("homepage", () => {
   const line = ref(1);
   const cartData = ref();
   const totlaPrice = ref();
+  const num = ref(1);
   const on = ref(true);
   const changeSpace = (item) => {
     switch (item) {
@@ -97,6 +98,17 @@ export const useHomePage = defineStore("homepage", () => {
     router.push("/checkout");
     on.value = false;
   };
+
+  const check = (index) => {
+    num.value = index;
+  };
+  const bottomLine = (index) => {
+    if (num.value == index) {
+      return "click";
+    } else {
+      return "";
+    }
+  };
   return {
     spaceImg,
     spaceImgs,
@@ -108,5 +120,8 @@ export const useHomePage = defineStore("homepage", () => {
     delCart,
     checkout,
     on,
+    num,
+    check,
+    bottomLine,
   };
 });

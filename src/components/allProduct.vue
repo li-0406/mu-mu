@@ -20,18 +20,19 @@ const { product } = storeToRefs(useProductsSeries());
             </router-link>
           </div>
           <div
-            class="productText d-flex flex-sm-column flex-md-row justify-content-between px-md-2 px-xl-5"
+            class="productText d-flex justify-content-between px-md-2 px-xl-5"
           >
             <div class="name">
               <h4 class="fs-5 fs-sm-1">{{ item.title }}</h4>
               <h4 class="fs-5">NT${{ item.price }}</h4>
             </div>
-            <button
-              class="rounded-3 px-3 h-50 py-2 my-auto"
-              @click="addCart(item)"
+            <a
+              href="#"
+              class="d-block my-auto me-2"
+              @click.prevent="addCart(item)"
             >
-              加入購物車
-            </button>
+              <i class="fa-solid fa-cart-plus fa-xl"></i>
+            </a>
           </div>
         </div>
       </div>
