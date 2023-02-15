@@ -2,15 +2,15 @@ import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 import axios from "axios";
 import router from "@/router";
+import { useProductsSeries } from "./productSeries";
 const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 
 export const useHomePage = defineStore("homepage", () => {
+  const { getCart } = useProductsSeries();
   const spaceImg = ref("");
   const spaceImgs = ref([]);
   const line = ref(1);
-  const cartData = ref();
-  const totlaPrice = ref();
   const num = ref(1);
   const on = ref(true);
   const changeSpace = (item) => {
@@ -79,14 +79,6 @@ export const useHomePage = defineStore("homepage", () => {
     }
     return normal;
   };
-
-  const getCart = () => {
-    axios.get(`${url}/api/${path}/cart`).then((res) => {
-      cartData.value = res.data.data.carts;
-      totlaPrice.value = res.data.data.total;
-      console.log(cartData.value);
-    });
-  };
   const delCart = (item) => {
     axios.delete(`${url}/api/${path}/cart/${item.id}`).then((res) => {
       getCart();
@@ -114,9 +106,6 @@ export const useHomePage = defineStore("homepage", () => {
     spaceImgs,
     changeSpace,
     checkSpace,
-    getCart,
-    cartData,
-    totlaPrice,
     delCart,
     checkout,
     on,

@@ -9,13 +9,7 @@ onMounted(() => {
 <template>
   <div class="container header">
     <div class="row">
-      <div class="col-12 d-flex pt-5">
-        <div class="title mx-auto text-center">
-          <h1 class="mb-0">CONCEPT</h1>
-          <p class="fs-3">品牌理念</p>
-        </div>
-      </div>
-      <div class="col-12 pt-5 text">
+      <div class="col-12 pt-0 text">
         <div class="logo mx-auto"></div>
         <div class="text-center">
           <h1 class="fs-4">日本家具的設計與職人精神</h1>

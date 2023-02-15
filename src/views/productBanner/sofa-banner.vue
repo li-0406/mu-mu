@@ -1,9 +1,9 @@
 <script setup>
-import { onBeforeMount } from "@vue/runtime-core";
+import { onMounted } from "@vue/runtime-core";
 import allProduct from "../../components/allProduct.vue";
 import { useProductsSeries } from "../../stores/productSeries.js";
 const { changeProducts } = useProductsSeries();
-onBeforeMount(() => {
+onMounted(() => {
   changeProducts(2);
 });
 </script>

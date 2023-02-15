@@ -1,14 +1,15 @@
 import { defineStore } from "pinia";
 import { ref } from "vue";
 import axios from "axios";
-import { useHomePage } from "./homepage.js";
+import router from "@/router";
+import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 
 export const usecheckOut = defineStore("checkout", () => {
-  const { getCart } = useHomePage();
-  const { cartData, totlaPrice } = storeToRefs(useHomePage());
+  const { getCart } = useProductsSeries();
+  const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
   const userData = ref({
     name: "",
     email: "",
@@ -34,8 +35,8 @@ export const usecheckOut = defineStore("checkout", () => {
     axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then((res) => {
       console.log(res);
       getCart();
-      sessionStorage.setItem("cartList", JSON.stringify(cartData.value));
-      sessionStorage.setItem("totlaPrice", JSON.stringify(totlaPrice.value));
+      // sessionStorage.setItem("cartList", JSON.stringify(cartData.value));
+      // sessionStorage.setItem("totlaPrice", JSON.stringify(totlaPrice.value));
     });
   };
 
@@ -44,6 +45,16 @@ export const usecheckOut = defineStore("checkout", () => {
       getCart();
     });
   };
+  const backHome = () => {
+    router.push("/");
+    axios.delete(`${url}/api/${path}/carts`).then((res) => {
+      cartData.value = [];
+      totlaPrice.value = {};
+      userData.value = {
+        pay: "信用卡",
+      };
+    });
+  };
 
-  return { plus, cartData, totlaPrice, delCart, userData, orderNum };
+  return { plus, cartData, totlaPrice, delCart, userData, orderNum, backHome };
 });

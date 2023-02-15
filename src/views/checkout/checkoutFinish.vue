@@ -4,27 +4,14 @@ import { useHomePage } from "../../stores/homepage";
 import { storeToRefs } from "pinia";
 import { onBeforeMount } from "@vue/runtime-core";
 import axios from "axios";
-import router from "@/router";
 const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 const { orderNum, userData } = storeToRefs(usecheckOut());
+const { backHome } = usecheckOut();
 const { cartData, totlaPrice } = storeToRefs(useHomePage());
-
 onBeforeMount(() => {
   orderNum.value = JSON.parse(sessionStorage.getItem("orderNum"));
-  console.log(orderNum.value);
 });
-const backHome = () => {
-  router.push("/");
-
-  axios.delete(`${url}/api/${path}/carts`).then((res) => {
-    cartData.value = [];
-    totlaPrice.value = {};
-    userData.value = {
-      pay: "信用卡",
-    };
-  });
-};
 </script>
 <template>
   <div class="container">

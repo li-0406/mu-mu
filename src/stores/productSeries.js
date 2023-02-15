@@ -4,20 +4,19 @@ import { storeToRefs } from "pinia";
 import axios from "axios";
 import router from "@/router";
 import { useHomePage } from "./homepage.js";
-import { getCurrentInstance } from "vue";
 const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 export const useProductsSeries = defineStore("productsSeries", () => {
-  const { getCart } = useHomePage();
-  const { cartData } = storeToRefs(useHomePage());
   const product = ref([]);
   const index = ref(1);
   const searchText = ref("");
-  const productPage = ref();
+  const productPage = ref({});
   const alosLike = ref([]);
   const arr = ref([]);
-  const mainPic = ref();
+  const mainPic = ref("");
   const productQuantity = ref(1);
+  const cartData = ref({});
+  const totlaPrice = ref(0);
   const changeProducts = (item) => {
     switch (item) {
       case 1:
@@ -26,12 +25,18 @@ export const useProductsSeries = defineStore("productsSeries", () => {
           .then((res) => {
             product.value = res.data.products;
             index.value = item;
+            product.value.forEach((item) => {
+              item.price = toThousands(item.price);
+            });
           });
         break;
       case 2:
         axios.get(`${url}/api/${path}/products?category=沙發`).then((res) => {
           product.value = res.data.products;
           index.value = item;
+          product.value.forEach((item) => {
+            item.price = toThousands(item.price);
+          });
         });
         break;
       case 3:
@@ -40,6 +45,9 @@ export const useProductsSeries = defineStore("productsSeries", () => {
           .then((res) => {
             product.value = res.data.products;
             index.value = item;
+            product.value.forEach((item) => {
+              item.price = toThousands(item.price);
+            });
           });
         break;
       case 4:
@@ -48,6 +56,9 @@ export const useProductsSeries = defineStore("productsSeries", () => {
           .then((res) => {
             product.value = res.data.products;
             index.value = item;
+            product.value.forEach((item) => {
+              item.price = toThousands(item.price);
+            });
           });
         break;
       case 5:
@@ -56,6 +67,9 @@ export const useProductsSeries = defineStore("productsSeries", () => {
           .then((res) => {
             product.value = res.data.products;
             index.value = item;
+            product.value.forEach((item) => {
+              item.price = toThousands(item.price);
+            });
           });
         break;
       case 6:
@@ -64,6 +78,9 @@ export const useProductsSeries = defineStore("productsSeries", () => {
           .then((res) => {
             product.value = res.data.products;
             index.value = item;
+            product.value.forEach((item) => {
+              item.price = toThousands(item.price);
+            });
           });
         break;
     }
@@ -81,7 +98,6 @@ export const useProductsSeries = defineStore("productsSeries", () => {
       return;
     } else {
       axios.get(`${url}/api/${path}/products/all`).then((res) => {
-        console.log(res.data.products);
         product.value = res.data.products.filter((item) => {
           if (item.title.match(searchText.value) != null) {
             return item.title.match(searchText.value);
@@ -92,12 +108,12 @@ export const useProductsSeries = defineStore("productsSeries", () => {
       });
     }
   };
-
   const details = (item) => {
     axios.get(`${url}/api/${path}/product/${item}`).then((res) => {
       productPage.value = res.data.product;
       mainPic.value = productPage.value.imagesUrl[0];
       like(productPage.value.category);
+      productPage.value.price = toThousands(productPage.value.price);
     });
   };
   const like = (item) => {
@@ -112,11 +128,11 @@ export const useProductsSeries = defineStore("productsSeries", () => {
       alosLike.value = [];
       for (let i = 0; i <= 3; i++) {
         alosLike.value.push(res.data.products[arr.value[i]]);
+        alosLike.value[i].price = toThousands(alosLike.value[i].price);
       }
     });
-
-    // sessionStorage.setItem("alosLike", JSON.stringify(alosLike.value));
   };
+
   const addCart = (item, qty = 1) => {
     const data = {
       product_id: item.id,
@@ -125,8 +141,19 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
       getCart();
     });
+
     const mytoast = new bootstrap.Toast(document.getElementById("toast"));
     mytoast.show();
+  };
+  const getCart = () => {
+    axios.get(`${url}/api/${path}/cart`).then((res) => {
+      cartData.value = res.data.data.carts;
+      totlaPrice.value = toThousands(res.data.data.total);
+      cartData.value.forEach((item) => {
+        item.product.price = toThousands(item.product.price);
+        item.total = toThousands(item.total);
+      });
+    });
   };
   const buy = (item, qty) => {
     const data = {
@@ -138,7 +165,9 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     });
     router.push("/checkout");
   };
-
+  const toThousands = (num) => {
+    return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, "$1,");
+  };
   return {
     changeProducts,
     product,
@@ -150,9 +179,12 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     alosLike,
     addCart,
     cartData,
+    totlaPrice,
     productQuantity,
     buy,
     mainPic,
     index,
+    getCart,
+    toThousands,
   };
 });

@@ -1,11 +1,13 @@
 <script setup>
 import { ref } from "@vue/reactivity";
 import { useHomePage } from "../stores/homepage.js";
+import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 import { onMounted } from "@vue/runtime-core";
-const { getCart, putCart, delCart, checkout, check, bottomLine } =
-  useHomePage();
-const { cartData, totlaPrice, on, num } = storeToRefs(useHomePage());
+const { putCart, delCart, checkout, check, bottomLine } = useHomePage();
+const { on } = storeToRefs(useHomePage());
+const { getCart } = useProductsSeries();
+const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
 const openCart = ref("");
 const open = () => {
   on.value = !on.value;
@@ -71,7 +73,12 @@ onMounted(() => {
           >
         </li>
         <li>
-          <a href="" :class="bottomLine(5)" @click="check(5)">常見問題</a>
+          <router-link
+            to="/maintainance"
+            :class="bottomLine(5)"
+            @click="check(5)"
+            >保養方式</router-link
+          >
         </li>
       </ul>
     </div>
@@ -121,7 +128,7 @@ onMounted(() => {
       v-if="cartData && cartData.length > 0"
     >
       <h4 class="fs-5">小計:</h4>
-      <h4 class="fs-5">NT${{ totlaPrice }}</h4>
+      <h4 class="fs-5">NT$ {{ totlaPrice }}</h4>
     </div>
     <button
       type="button"
@@ -141,6 +148,9 @@ onMounted(() => {
     id="delmsg"
   >
     <div class="d-flex">
+      <div class="d-flex align-items-center ms-2">
+        <i class="fa-regular fa-trash-can"></i>
+      </div>
       <div class="toast-body fw-light">已從購物車移除</div>
       <button
         type="button"
@@ -185,7 +195,7 @@ header {
           left: 50%;
           bottom: -5px;
           border-bottom: 2px solid #865031;
-          transition: 0.6s;
+          transition: 0.8s;
         }
         &:hover::after {
           right: 0%;

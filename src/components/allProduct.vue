@@ -24,7 +24,7 @@ const { product } = storeToRefs(useProductsSeries());
           >
             <div class="name">
               <h4 class="fs-5 fs-sm-1">{{ item.title }}</h4>
-              <h4 class="fs-5">NT${{ item.price }}</h4>
+              <h4 class="fs-5">NT$ {{ item.price }}</h4>
             </div>
             <a
               href="#"
@@ -47,6 +47,9 @@ const { product } = storeToRefs(useProductsSeries());
     id="toast"
   >
     <div class="d-flex">
+      <div class="d-flex align-items-center ms-2">
+        <i class="fa-regular fa-circle-check"></i>
+      </div>
       <div class="toast-body fw-light">已加入購物車</div>
       <button
         type="button"

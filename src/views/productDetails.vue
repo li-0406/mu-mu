@@ -156,6 +156,9 @@ const plus = (item) => {
     id="toast"
   >
     <div class="d-flex">
+      <div class="d-flex align-items-center ms-2">
+        <i class="fa-regular fa-circle-check"></i>
+      </div>
       <div class="toast-body fw-light">已加入購物車</div>
       <button
         type="button"

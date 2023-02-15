@@ -1,16 +1,17 @@
 <script setup>
 import { ref } from "@vue/runtime-core";
 import { usecheckOut } from "../../stores/checkOut.js";
+import { useProductsSeries } from "../../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import router from "@/router";
 
 const { plus, delCart } = usecheckOut();
-const { cartData, totlaPrice, userData } = storeToRefs(usecheckOut());
+const { userData } = storeToRefs(usecheckOut());
+const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
 const onSubmit = () => {
   sessionStorage.setItem("userData", JSON.stringify(userData.value));
   router.push("/checkout/orderCheck");
-  console.log(userData.value);
 };
 </script>
 <template>

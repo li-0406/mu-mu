@@ -140,12 +140,6 @@ onMounted(() => {
       width: 33%;
       text-align: center;
     }
-    .click {
-      &::after {
-        right: 0%;
-        left: 0%;
-      }
-    }
     a {
       line-height: 84px;
       position: relative;
@@ -156,12 +150,18 @@ onMounted(() => {
         left: 50%;
         bottom: -5px;
         border-bottom: 2px solid #865031;
-        transition: 0.6s;
+        transition: 0.8s;
       }
       &:hover::after {
         right: 0%;
         left: 0%;
       }
+    }
+  }
+  .click {
+    &::after {
+      right: 0%;
+      left: 0%;
     }
   }
 }

@@ -1,9 +1,10 @@
 <script setup>
 import { onBeforeMount, ref } from "@vue/runtime-core";
 import { usecheckOut } from "../stores/checkOut.js";
+import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 const { plus, delCart } = usecheckOut();
-const { cartData, totlaPrice } = storeToRefs(usecheckOut());
+const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
 onBeforeMount(() => {});
 </script>
 <template>
