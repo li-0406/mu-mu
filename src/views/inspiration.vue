@@ -24,13 +24,24 @@ onMounted(() => {
     <div class="container header">
       <div class="row">
         <div class="col-12 d-flex position-relative pt-5">
-          <div class="title mx-auto text-center">
+          <div
+            class="title mx-auto text-center"
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in"
+            data-aos-duration="2000"
+          >
             <h1 class="mb-0">INSPIRATION</h1>
             <p class="fs-3">靈感</p>
           </div>
         </div>
         <div class="col-12 d-flex py-5">
-          <div class="mx-auto text-center">
+          <div
+            class="mx-auto text-center"
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in"
+            data-aos-delay="300"
+            data-aos-duration="2000"
+          >
             <h2 class="fs-3">一切隨心，用心去感悟空間</h2>
             <h3 class="fs-6 fw-light lh-lg pt-3">
               將設計與空間融合，<br />

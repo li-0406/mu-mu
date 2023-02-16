@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from "@vue/runtime-core";
+import { onMounted, ref } from "@vue/runtime-core";
 import allProduct from "../../components/allProduct.vue";
 import { useProductsSeries } from "../../stores/productSeries.js";
 const { changeProducts } = useProductsSeries();
@@ -12,10 +12,21 @@ onMounted(() => {
   <div class="container banner">
     <div class="row">
       <div class="col-12">
-        <div class="pic"></div>
+        <div
+          class="pic"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-duration="2000"
+        ></div>
       </div>
       <div class="col-12 py-3">
-        <h4 class="fs-6 lh-lg">
+        <h4
+          class="fs-6 lh-lg"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-delay="1000"
+          data-aos-duration="2000"
+        >
           茶几 ( 咖啡桌 ) 對於習慣在和室生活的日本人來說，<br />
           使用頻率可以說是非常高，<br />
           對於茶几的設計與細節更是趨近挑剔，<br />

@@ -13,7 +13,7 @@ import * as bootstrap from "bootstrap";
 window.bootstrap = bootstrap;
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
-
+import "vue-loading-overlay/dist/css/index.css";
 import "./assets/main.css";
 
 router.afterEach((to, from, next) => {
@@ -27,7 +27,6 @@ Object.keys(AllRules).forEach((rule) => {
 });
 
 import { localize } from "@vee-validate/i18n";
-// import zh_TW from "@vee-validate/i18n/dist/locale/zh_TW.json";
 import en from "./zh_TW.json";
 
 configure({

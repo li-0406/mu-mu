@@ -1,8 +1,19 @@
 <script setup>
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
+import { useLoading } from "vue-loading-overlay";
 const { like, addCart } = useProductsSeries();
 const { product } = storeToRefs(useProductsSeries());
+const $loading = useLoading();
+const fullPage = ref(false);
+const submit = () => {
+  const loader = $loading.show({
+    backgroundColor: "",
+  });
+  setTimeout(() => {
+    loader.hide();
+  }, 5000);
+};
 </script>
 
 <template>

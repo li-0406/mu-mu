@@ -1,64 +1,65 @@
 <script setup>
 import { ref } from "@vue/reactivity";
-import { onBeforeMount, onMounted } from "@vue/runtime-core";
+import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
 import { useRoute } from "vue-router";
-import LocomotiveScroll from "locomotive-scroll";
 
 const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
-const pic = ref();
-const article = ref();
+const pic = ref([]);
+const article = ref({});
 const back = ref("gray");
 const scrollTop = ref(0);
-onBeforeMount(() => {
-  axios
-    .get(`${url}/api/${path}/product/${useRoute().params.id}`)
-    .then((res) => {
-      const id = useRoute().params.id;
-      pic.value = res.data.product.imagesUrl;
-      article.value = res.data.product;
-      switch (id) {
-        case "-NOA3hHxXMN9OM0e6dw8":
-          back.value = "brown";
-          break;
-        case "-NOA2sOdc9oCxe_SP_DJ":
-          back.value = "darkBlue";
-          break;
-        case "-NOA21Fcfw8Up6mXB3WY":
-          back.value = "lightBlue";
-          break;
-        default:
-          back.value = "gray";
-      }
-    });
-});
-window.addEventListener("scroll", function (e) {
-  scrollTop.value = window.scrollY;
-});
+const id = ref("");
+
+const getData = () => {
+  id.value = useRoute().params.id;
+  axios.get(`${url}/api/${path}/product/${id.value}`).then((res) => {
+    pic.value = res.data.product.imagesUrl;
+    article.value = res.data.product;
+    switch (id.value) {
+      case "-NOA3hHxXMN9OM0e6dw8":
+        back.value = "brown";
+        break;
+      case "-NOA2sOdc9oCxe_SP_DJ":
+        back.value = "darkBlue";
+        break;
+      case "-NOA21Fcfw8Up6mXB3WY":
+        back.value = "lightBlue";
+        break;
+      default:
+        back.value = "gray";
+    }
+  });
+};
 const toTop = () => {
   document.documentElement.scrollTop = document.body.scrollTop = 0;
 };
-const container = ref(null);
-const setLocomotiveScroll = () => {
-  new LocomotiveScroll({
-    el: container.value,
-    smooth: true,
-    multiplier: 3,
-  });
-};
-onMounted(() => {});
+onMounted(() => {
+  getData();
+});
 </script>
 <template>
   <div :class="back" ref="container">
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-5">
-          <div>
+          <div
+            data-aos="fade-zoom-in"
+            data-aos-easing="ease-in"
+            data-aos-delay="500"
+            data-aos-duration="2000"
+          >
             <h1 class="bigT">{{ article.title }}</h1>
           </div>
         </div>
-        <div class="col-7 d-none d-md-flex pb-5 align-items-end text">
+        <div
+          class="col-7 d-none d-md-flex pb-5 align-items-end text"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-delay="1500"
+          data-aos-duration="2000"
+        >
           <div class="ms-0">
             <p class="mb-5 fw-light">
               Date <br />
@@ -83,12 +84,22 @@ onMounted(() => {});
         <div
           class="col-12 col-md-5 lh-lg fs-6 fw-light pb-5"
           style="white-space: pre-wrap; letter-spacing: 1.5px"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-delay="1000"
+          data-aos-duration="2000"
         >
           {{ article.content }}
         </div>
         <div class="col-12 col-md-7">
           <div v-for="item in pic" :key="item" class="mb-5">
-            <img :src="item" class="w-100" />
+            <img
+              :src="item"
+              class="w-100"
+              data-aos="fade-up"
+              data-aos-anchor-placement="center-bottom"
+              data-aos-duration="1000"
+            />
           </div>
         </div>
         <div class="col-12 d-flex flex-row-reverse pb-2">
@@ -133,6 +144,7 @@ onMounted(() => {});
 .bigT {
   margin-bottom: 300px;
   font-size: 28px;
+  font-weight: 300;
   @include lg {
     margin-bottom: 100px;
     font-size: 20px;

@@ -24,7 +24,14 @@ const toTop = () => {
 };
 </script>
 <template>
-  <div class="col-12 d-sm-flex total" v-for="item in article" :key="item.id">
+  <div
+    class="col-12 d-sm-flex total"
+    v-for="item in article"
+    :key="item.id"
+    data-aos="fade-up"
+    data-aos-anchor-placement="top-bottom"
+    data-aos-duration="1500"
+  >
     <div class="pic">
       <router-link :to="`/inside/${item.id}`">
         <img :src="item.imageUrl" class="w-100" />

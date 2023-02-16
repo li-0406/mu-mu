@@ -1,23 +1,22 @@
 <script setup></script>
 <template>
   <div class="position-relative banner d-flex">
-    <div class="">
-      <img
-        src="../../assets/homepage/desktop_kv.png"
-        class="w-100"
-        data-aos="fade-zoom-in"
-        data-aos-easing="ease"
-        data-aos-offset="0"
-        data-aos-duration="2000"
-        data-aos-once="true"
-      />
+    <div
+      data-aos="fade-zoom-in"
+      data-aos-easing="ease"
+      data-aos-offset="0"
+      data-aos-duration="3000"
+      data-aos-once="true"
+    >
+      <img src="../../assets/homepage/desktop_kv.png" class="w-100" />
       <div
         class="position-absolute bannerText"
         data-aos="fade-zoom-in"
         data-aos-easing="ease-in-back"
         data-aos-offset="0"
-        data-aos-duration="3000"
+        data-aos-duration="2000"
         data-aos-once="true"
+        data-aos-delay="100"
       >
         <h1 class="fs-2 mb-5 lh-base fw-light">
           將設計融於人性<br />

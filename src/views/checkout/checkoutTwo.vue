@@ -118,7 +118,7 @@ const onSubmit = () => {
             id="email"
             name="email"
             type="text"
-            class="enter"
+            class="form-control"
             v-model="userData.text"
           ></textarea>
         </div>
@@ -192,15 +192,6 @@ const onSubmit = () => {
   width: 40%;
   @include sm {
     width: 80%;
-  }
-  .enter {
-    width: 100%;
-    padding: 5px 10px;
-    border-radius: 10px;
-    border: 1.5px solid #bbbbbb;
-    &:focus {
-      outline: 1.5px solid #865031;
-    }
   }
 }
 .Payment {

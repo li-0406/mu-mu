@@ -12,10 +12,21 @@ onMounted(() => {
   <div class="container banner">
     <div class="row">
       <div class="col-12">
-        <div class="pic"></div>
+        <div
+          class="pic"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-duration="2000"
+        ></div>
       </div>
       <div class="col-12 py-3">
-        <h4 class="fs-6 lh-lg">
+        <h4
+          class="fs-6 lh-lg"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-delay="1000"
+          data-aos-duration="2000"
+        >
           知名玩具公司"樂高"其實是由木製玩具起家的，<br />
           創始人原先是一名木匠，<br />
           自己用先前做家具的木材做了一個玩具給孩子們玩後，<br />

@@ -40,6 +40,11 @@ onMounted(() => {
   </div>
 </template>
 <style scoped lang="scss">
+@mixin md {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
 .title {
   h1 {
     font-family: "Josefin Sans", sans-serif;
@@ -65,6 +70,10 @@ onMounted(() => {
     width: 10%;
     height: 0;
     padding-bottom: 10%;
+    @include md {
+      width: 20%;
+      padding-bottom: 20%;
+    }
   }
 }
 .banner {

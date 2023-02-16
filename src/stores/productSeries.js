@@ -20,64 +20,68 @@ export const useProductsSeries = defineStore("productsSeries", () => {
   const changeProducts = (item) => {
     switch (item) {
       case 1:
+        index.value = item;
         axios
           .get(`${url}/api/${path}/products?category=桌子/茶几`)
           .then((res) => {
             product.value = res.data.products;
-            index.value = item;
             product.value.forEach((item) => {
               item.price = toThousands(item.price);
             });
           });
         break;
       case 2:
+        index.value = item;
         axios.get(`${url}/api/${path}/products?category=沙發`).then((res) => {
           product.value = res.data.products;
-          index.value = item;
           product.value.forEach((item) => {
             item.price = toThousands(item.price);
           });
         });
         break;
       case 3:
+        index.value = item;
         axios
           .get(`${url}/api/${path}/products?category=客/餐廳櫃類`)
           .then((res) => {
             product.value = res.data.products;
-            index.value = item;
+
             product.value.forEach((item) => {
               item.price = toThousands(item.price);
             });
           });
         break;
       case 4:
+        index.value = item;
         axios
           .get(`${url}/api/${path}/products?category=臥房櫃類`)
           .then((res) => {
             product.value = res.data.products;
-            index.value = item;
+
             product.value.forEach((item) => {
               item.price = toThousands(item.price);
             });
           });
         break;
       case 5:
+        index.value = item;
         axios
           .get(`${url}/api/${path}/products?category=椅/凳子`)
           .then((res) => {
             product.value = res.data.products;
-            index.value = item;
+
             product.value.forEach((item) => {
               item.price = toThousands(item.price);
             });
           });
         break;
       case 6:
+        index.value = item;
         axios
           .get(`${url}/api/${path}/products?category=木製小物`)
           .then((res) => {
             product.value = res.data.products;
-            index.value = item;
+
             product.value.forEach((item) => {
               item.price = toThousands(item.price);
             });

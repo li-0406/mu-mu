@@ -26,7 +26,7 @@
               <i class="fa-solid fa-envelope"></i>&ensp;future.design@gmail.com
             </p>
           </li>
-          <li class="d-flex">
+          <li class="d-flex" style="color: rgba(53, 43, 37, 0.5)">
             <i
               class="me-4 fa-brands fa-square-facebook fa-xl icon"
               role="button"

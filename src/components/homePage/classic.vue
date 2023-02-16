@@ -32,8 +32,9 @@ onMounted(() => {
         data-aos="fade-right"
         data-aos-offset="0"
         data-aos-easing="ease-in-out"
-        data-aos-duration="1500"
+        data-aos-duration="1000"
         data-aos-once="true"
+        data-aos-delay="200"
       >
         <div class="position-relative classicPic">
           <img :src="table.imageUrl" class="w-100" />
@@ -51,8 +52,9 @@ onMounted(() => {
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-offset="0"
-          data-aos-duration="1500"
+          data-aos-duration="1000"
           data-aos-once="true"
+          data-aos-delay="400"
         >
           <div class="classicText">
             <h2 class="fw-light">
@@ -69,6 +71,7 @@ onMounted(() => {
         data-aos-easing="ease-in-out"
         data-aos-duration="1500"
         data-aos-once="true"
+        data-aos-delay="600"
       >
         <div class="position-relative classicPic order-2">
           <img :src="sofa.imageUrl" class="w-100" />
@@ -88,6 +91,7 @@ onMounted(() => {
           data-aos-offset="0"
           data-aos-duration="1500"
           data-aos-once="true"
+          data-aos-delay="800"
         >
           <div class="classicText">
             <h2 class="fw-light">
@@ -104,6 +108,7 @@ onMounted(() => {
         data-aos-easing="ease-in-out"
         data-aos-duration="1500"
         data-aos-once="true"
+        data-aos-delay="1000"
       >
         <div class="position-relative classicPic">
           <img :src="small.imageUrl" class="w-100" />
@@ -123,6 +128,7 @@ onMounted(() => {
           data-aos-offset="0"
           data-aos-duration="1500"
           data-aos-once="true"
+          data-aos-delay="1200"
         >
           <div class="classicText">
             <h2 class="fw-light">

@@ -17,20 +17,25 @@ const open = () => {
     openCart.value = "colseCart";
   }
 };
-document.addEventListener("click", (event) => {
-  var cart = document.querySelector(".cart");
-  var topCart = document.querySelector(".topCart");
-  var out = event.target;
-  if (
-    !(topCart == out || topCart.contains(out)) ||
-    cart == out ||
-    cart.contains(out)
-  ) {
-    on.value = false;
-  }
-});
+const hide = () => {
+  document.removeEventListener("click", show);
+};
+const show = () => {
+  document.addEventListener("click", (e) => {
+    var cart = document.querySelector(".cart");
+    var topCart = document.querySelector(".topCart");
+    var pay = document.querySelector(".pay");
+    var out = e.target;
+    if (!cart.contains(out) && !topCart.contains(out) && !pay.contains(out)) {
+      on.value = false;
+    }
+    hide();
+  });
+};
+
 onMounted(() => {
   getCart();
+  show();
 });
 </script>
 
@@ -83,17 +88,23 @@ onMounted(() => {
       </ul>
     </div>
     <div class="pe-3 topCart d-flex">
-      <a href="" class="d-inline d-lg-none">
+      <a href="" class="d-inline d-lg-none" style="color: #352b25">
         <i class="fa-solid fa-magnifying-glass fa-xl search"></i>
       </a>
-      <a href="" @click.prevent="open" class="ms-4"
+      <a
+        href=""
+        @click.prevent="open"
+        class="ms-4 position-relative text-decoration-none"
+        style="color: #352b25"
         ><i class="fa-solid fa-cart-shopping fa-xl"></i>
         <span
           class="dot position-absolute"
           v-if="cartData && cartData.length > 0"
         ></span>
       </a>
-      <a><i class="fa-solid fa-bars fa-xl bars d-inline d-xl-none ms-4"></i></a>
+      <a class="d-inline d-xl-none" style="color: #352b25"
+        ><i class="fa-solid fa-bars fa-xl bars ms-4"></i
+      ></a>
     </div>
   </header>
   <div
