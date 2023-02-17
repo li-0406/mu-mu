@@ -13,8 +13,11 @@ import * as bootstrap from "bootstrap";
 window.bootstrap = bootstrap;
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
+
 import "vue-loading-overlay/dist/css/index.css";
 import "./assets/main.css";
+
+import vClickOutside from "click-outside-vue3";
 
 router.afterEach((to, from, next) => {
   window.scrollTo(0, 0);
@@ -40,4 +43,5 @@ const app = createApp(App);
 AOS.init();
 app.use(createPinia());
 app.use(router);
+app.use(vClickOutside);
 app.mount("#app");

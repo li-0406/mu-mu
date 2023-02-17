@@ -100,10 +100,8 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <!-- banner -->
+
   <router-view></router-view>
-  <!-- product -->
-  <!-- <allproducts /> -->
 </template>
 <style scoped lang="scss">
 @mixin mobile {
@@ -165,7 +163,4 @@ onMounted(() => {
     }
   }
 }
-// banner
-
-// product
 </style>

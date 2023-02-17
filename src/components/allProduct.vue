@@ -1,19 +1,9 @@
 <script setup>
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
-import { useLoading } from "vue-loading-overlay";
+import { ref } from "@vue/reactivity";
 const { like, addCart } = useProductsSeries();
-const { product } = storeToRefs(useProductsSeries());
-const $loading = useLoading();
-const fullPage = ref(false);
-const submit = () => {
-  const loader = $loading.show({
-    backgroundColor: "",
-  });
-  setTimeout(() => {
-    loader.hide();
-  }, 5000);
-};
+const { product, loading } = storeToRefs(useProductsSeries());
 </script>
 
 <template>
@@ -41,6 +31,7 @@ const submit = () => {
               href="#"
               class="d-block my-auto me-2"
               @click.prevent="addCart(item)"
+              style="color: #352b25"
             >
               <i class="fa-solid fa-cart-plus fa-xl"></i>
             </a>
@@ -74,6 +65,7 @@ const submit = () => {
 
 <style lang="scss" scoped>
 .back {
+  position: relative;
   background-color: #fff9f3;
 }
 .productPic {

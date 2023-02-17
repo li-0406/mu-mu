@@ -7,10 +7,12 @@ const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 const article = ref();
 const scrollTop = ref(0);
+const loading = ref(false);
 const getData = () => {
+  loading.value = true;
   axios.get(`${url}/api/${path}/products?category=靈感`).then((res) => {
     article.value = res.data.products;
-    console.log(article.value);
+    loading.value = false;
   });
 };
 onMounted(() => {
@@ -24,6 +26,12 @@ const toTop = () => {
 };
 </script>
 <template>
+  <div class="load" v-if="loading">
+    <i
+      class="fa-regular fa-image fa-2x fa-fade m-auto"
+      style="color: #fff; --fa-animation-duration: 2s; --fa-fade-opacity: 0.1"
+    ></i>
+  </div>
   <div
     class="col-12 d-sm-flex total"
     v-for="item in article"
@@ -64,6 +72,16 @@ const toTop = () => {
   @media (max-width: 992px) {
     @content;
   }
+}
+.load {
+  width: 100%;
+  height: 100%;
+  background-color: #828282;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: flex;
 }
 .total {
   padding-left: 10%;

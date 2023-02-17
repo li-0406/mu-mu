@@ -8,11 +8,13 @@ const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 const pic = ref([]);
 const article = ref({});
-const back = ref("gray");
+const back = ref(" ");
 const scrollTop = ref(0);
 const id = ref("");
+const loading = ref(false);
 
 const getData = () => {
+  loading.value = true;
   id.value = useRoute().params.id;
   axios.get(`${url}/api/${path}/product/${id.value}`).then((res) => {
     pic.value = res.data.product.imagesUrl;
@@ -30,6 +32,7 @@ const getData = () => {
       default:
         back.value = "gray";
     }
+    loading.value = false;
   });
 };
 const toTop = () => {
@@ -41,6 +44,12 @@ onMounted(() => {
 </script>
 <template>
   <div :class="back" ref="container">
+    <div class="load" v-if="loading">
+      <i
+        class="fa-regular fa-image fa-2x fa-fade m-auto"
+        style="color: #fff; --fa-animation-duration: 2s; --fa-fade-opacity: 0.1"
+      ></i>
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-5">
@@ -117,26 +126,31 @@ onMounted(() => {
     @content;
   }
 }
-
+.load {
+  width: 100%;
+  height: 100%;
+  background-color: #828282;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: flex;
+}
 .gray {
   padding-top: 10%;
   background-color: #828282;
-  transition: 1s;
 }
 .brown {
   padding-top: 10%;
   background-color: #7f5115;
-  transition: 1s;
 }
 .darkBlue {
   padding-top: 10%;
   background-color: #1b2834;
-  transition: 1s;
 }
 .lightBlue {
   padding-top: 10%;
   background-color: #57757b;
-  transition: 1s;
 }
 * {
   color: #fff;

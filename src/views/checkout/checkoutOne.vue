@@ -49,9 +49,8 @@ import cartList from "../../components/cartList.vue";
   max-width: 33%;
   position: relative;
   .text {
-    z-index: 1;
     font-weight: bold;
-    color: #fff;
+    color: #ffffff;
     font-size: 14px;
   }
   .schedule {
@@ -69,7 +68,7 @@ import cartList from "../../components/cartList.vue";
       left: 50%;
       top: 50%;
       position: absolute;
-      z-index: 0;
+      z-index: -1;
     }
   }
   .act::after {
@@ -90,7 +89,7 @@ import cartList from "../../components/cartList.vue";
     left: 50%;
     top: 35%;
     margin-top: -1px;
-    z-index: 0;
+    z-index: -2;
   }
 }
 .pay {

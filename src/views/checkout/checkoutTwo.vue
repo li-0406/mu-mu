@@ -141,7 +141,6 @@ const onSubmit = () => {
   max-width: 33%;
   position: relative;
   .text {
-    z-index: 1;
     font-weight: bold;
     color: #fff;
     font-size: 14px;
@@ -161,7 +160,7 @@ const onSubmit = () => {
       left: 50%;
       top: 50%;
       position: absolute;
-      z-index: 0;
+      z-index: -1;
     }
   }
   .act::after {
@@ -182,7 +181,7 @@ const onSubmit = () => {
     left: 50%;
     top: 35%;
     margin-top: -1px;
-    z-index: 0;
+    z-index: -2;
   }
 }
 .act::before {

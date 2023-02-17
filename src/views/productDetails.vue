@@ -1,18 +1,13 @@
 <script setup>
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
-import { onBeforeMount, onMounted, ref } from "@vue/runtime-core";
+import { onMounted, ref } from "@vue/runtime-core";
 import { useRouter, useRoute } from "vue-router";
 const { details, addCart, buy } = useProductsSeries();
-const { productQuantity, alosLike, productPage, mainPic } = storeToRefs(
-  useProductsSeries()
-);
-
-onBeforeMount(() => {
-  details(useRoute().params.id);
-});
+const { productQuantity, alosLike, productPage, mainPic, loading } =
+  storeToRefs(useProductsSeries());
 onMounted(() => {
-  console.log(productPage.value);
+  details(useRoute().params.id);
 });
 const changePic = (item) => {
   mainPic.value = item;
@@ -33,6 +28,12 @@ const plus = (item) => {
 </script>
 <template>
   <div class="back">
+    <div class="load" v-if="loading">
+      <i
+        class="fa-solid fa-chair fa-2x fa-fade m-auto"
+        style="color: #fff; --fa-animation-duration: 2s; --fa-fade-opacity: 0.1"
+      ></i>
+    </div>
     <div class="container pt-5">
       <div class="row">
         <div class="col-12">
@@ -50,8 +51,8 @@ const plus = (item) => {
                   href="#"
                   class="text-decoration-none text-black"
                   @click="$router.go(-1)"
-                  >{{ productPage.category }}</a
-                >
+                  >上一頁
+                </a>
               </li>
               <li
                 class="breadcrumb-item active text-black-50"
@@ -90,7 +91,7 @@ const plus = (item) => {
           <div class="input-group my-4 d-flex justify-content-center">
             <button
               type="button"
-              class="btn rounded-circle minus"
+              class="btn rounded-circle plus"
               @click="plus(`minus`)"
             >
               <i class="fa fa-minus"></i>
@@ -136,9 +137,9 @@ const plus = (item) => {
         >
           <div class="text-center p-sm-3">
             <div class="like" role="button">
-              <a @click="details(item.id)">
+              <router-link :to="`/${item.id}`" @click="details(item.id)">
                 <img :src="item.imageUrl" class="w-100" />
-              </a>
+              </router-link>
             </div>
             <h3 class="fs-6 pt-2 mb-1">{{ item.title }}</h3>
             <h3 class="mb-4 fs-6">NT${{ item.price }}</h3>
@@ -172,6 +173,17 @@ const plus = (item) => {
 <style lang="scss" scoped>
 .back {
   background-color: #fff9f3;
+  // position: relative;
+}
+.load {
+  width: 100%;
+  height: 100%;
+  background-color: #a0674b;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: flex;
 }
 .pic {
   overflow: hidden;
@@ -182,12 +194,16 @@ const plus = (item) => {
   padding: 10px 0;
   width: 45%;
   font-size: 16px;
-  border-radius: 20px;
+  border-radius: 16px;
 }
 .buy {
   border: none;
   background-color: #865031;
   color: #ffffff;
+  transition: 0.3s;
+  &:hover {
+    -webkit-filter: brightness(1.2);
+  }
 }
 .cart {
   border: 1px solid #865031;
@@ -211,7 +227,6 @@ const plus = (item) => {
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
   }
-  // margin-left: 32%;
   .text {
     border: none;
     background-color: transparent;
@@ -223,15 +238,9 @@ const plus = (item) => {
     }
   }
   .plus {
-    border: 2px solid #352b25;
+    border: 2px solid #9e9e9e;
     background-color: transparent;
-    button {
-      border: none;
-    }
-  }
-  .minus {
-    border: 2px solid #352b25;
-    background-color: transparent;
+    color: #9e9e9e;
     button {
       border: none;
     }

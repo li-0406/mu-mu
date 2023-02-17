@@ -12,7 +12,10 @@ export const useHomePage = defineStore("homepage", () => {
   const spaceImgs = ref([]);
   const line = ref(1);
   const num = ref(1);
-  const on = ref(true);
+  const openCart = ref("colseCart");
+  const openNav = ref("colseNav");
+  const on = ref(false);
+  const onNav = ref(false);
   const changeSpace = (item) => {
     switch (item) {
       case 1:
@@ -88,6 +91,7 @@ export const useHomePage = defineStore("homepage", () => {
   };
   const checkout = () => {
     router.push("/checkout");
+    openCart.value = "colseCart";
     on.value = false;
   };
 
@@ -101,6 +105,32 @@ export const useHomePage = defineStore("homepage", () => {
       return "";
     }
   };
+  const open = (name) => {
+    switch (name) {
+      case "cart":
+        if ((openNav.value = "openNav")) {
+          openNav.value = "colseNav";
+          onNav.value = false;
+        }
+        openNav.value = "colseNav";
+        on.value = !on.value;
+        on.value
+          ? (openCart.value = "openCart")
+          : (openCart.value = "colseCart");
+
+        break;
+      case "nav":
+        if ((openCart.value = "openCart")) {
+          openCart.value = "colseNav";
+          on.value = false;
+        }
+        onNav.value = !onNav.value;
+        onNav.value
+          ? (openNav.value = "openNav")
+          : (openNav.value = "colseNav");
+        break;
+    }
+  };
   return {
     spaceImg,
     spaceImgs,
@@ -108,9 +138,13 @@ export const useHomePage = defineStore("homepage", () => {
     checkSpace,
     delCart,
     checkout,
-    on,
     num,
     check,
     bottomLine,
+    openCart,
+    on,
+    open,
+    openNav,
+    onNav,
   };
 });

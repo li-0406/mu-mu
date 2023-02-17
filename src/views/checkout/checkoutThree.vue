@@ -1,14 +1,13 @@
 <script setup>
 import cartListLast from "../../components/cartListLast.vue";
-import { onBeforeMount, ref } from "@vue/runtime-core";
+import { onBeforeMount, onMounted, ref } from "@vue/runtime-core";
 import { usecheckOut } from "../../stores/checkOut.js";
 import { storeToRefs } from "pinia";
 import router from "@/router";
 const { orderNum, userData } = storeToRefs(usecheckOut());
-onBeforeMount(() => {
+onMounted(() => {
   userData.value = JSON.parse(sessionStorage.getItem("userData"));
   orderNum.value = new Date().getTime();
-  console.log(orderNum.value);
 });
 const finish = () => {
   sessionStorage.setItem("orderNum", JSON.stringify(orderNum.value));
@@ -78,7 +77,6 @@ const finish = () => {
   max-width: 33%;
   position: relative;
   .text {
-    z-index: 1;
     font-weight: bold;
     color: #fff;
     font-size: 14px;
@@ -98,7 +96,7 @@ const finish = () => {
       left: 50%;
       top: 50%;
       position: absolute;
-      z-index: 0;
+      z-index: -1;
     }
   }
 }
@@ -116,7 +114,7 @@ const finish = () => {
     left: 50%;
     top: 35%;
     margin-top: -1px;
-    z-index: 0;
+    z-index: -2;
   }
 }
 .information {

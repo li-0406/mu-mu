@@ -17,6 +17,7 @@ export const useProductsSeries = defineStore("productsSeries", () => {
   const productQuantity = ref(1);
   const cartData = ref({});
   const totlaPrice = ref(0);
+  const loading = ref(false);
   const changeProducts = (item) => {
     switch (item) {
       case 1:
@@ -113,18 +114,24 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     }
   };
   const details = (item) => {
+    loading.value = true;
+
     axios.get(`${url}/api/${path}/product/${item}`).then((res) => {
       productPage.value = res.data.product;
       mainPic.value = productPage.value.imagesUrl[0];
-      like(productPage.value.category);
+      like(productPage.value.category, productPage.value.title);
       productPage.value.price = toThousands(productPage.value.price);
+      loading.value = false;
     });
   };
-  const like = (item) => {
+  const like = (item, title) => {
     productQuantity.value = 1;
     arr.value = [];
     axios.get(`${url}/api/${path}/products?category=${item}`).then((res) => {
       for (var i = 0; i < res.data.products.length; i++) {
+        if (res.data.products[i].title == title) {
+          continue;
+        }
         arr.value.push(i);
       }
       arr.value.sort(() => Math.random() - 0.5);
@@ -190,5 +197,6 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     index,
     getCart,
     toThousands,
+    loading,
   };
 });

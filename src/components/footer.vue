@@ -1,4 +1,15 @@
-<script setup></script>
+<script setup>
+import { onMounted, ref } from "@vue/runtime-core";
+const map = ref(null);
+
+const initMap = () => {
+  map.value = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+};
+onMounted(() => {});
+</script>
 <template>
   <footer class="container footer">
     <div class="row">
@@ -75,15 +86,17 @@
         </ul>
         <div class="map ratio ratio-21x9">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2052533467563!2d121.57601114784678!3d25.061031456130724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab81417cf23d%3A0xd257a23dcf7fd985!2zMTE05Y-w5YyX5biC5YWn5rmW5Y2A6IiK5a6X6Lev5LiA5q61MTI46Jmf!5e0!3m2!1szh-TW!2stw!4v1675326060184!5m2!1szh-TW!2stw"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2052533467563!2d121.57601114784678!3d25.061031456130724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab81417cf23d%3A0xd257a23dcf7fd985!2zMTE05Y-w5YyX5biC5YWn5rmW5Y2A6IiK5a6X6Lev5LiA5q61MTI46Jmf!5e0!3m2!1szh-TW!2stw!4v1675326060184!5m2!1szh-TW!2stw?key=AIzaSyBhP3IK9AsDGlluur69hvK0HOgEyoSL5jI&libraries=geometry&callback=initMap"
             width="600"
             height="450"
             style="border: 0"
             allowfullscreen=""
             loading="lazy"
+            id="map"
             referrerpolicy="no-referrer-when-downgrade"
             class="w-100 h-100"
-          ></iframe>
+          >
+          </iframe>
         </div>
       </div>
       <div class="col-12 order-3">

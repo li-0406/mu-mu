@@ -35,8 +35,6 @@ export const usecheckOut = defineStore("checkout", () => {
     axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then((res) => {
       console.log(res);
       getCart();
-      // sessionStorage.setItem("cartList", JSON.stringify(cartData.value));
-      // sessionStorage.setItem("totlaPrice", JSON.stringify(totlaPrice.value));
     });
   };
 

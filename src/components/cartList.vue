@@ -33,8 +33,8 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
           <td>NT${{ item.product.price }}</td>
           <td class="text-center">
             <div class="num">
-              <button class="minus border-0" @click="plus(item, `minus`)">
-                <i class="fa fa-minus text-reset"></i>
+              <button class="border-0" @click="plus(item, `minus`)">
+                <i class="fa fa-minus" style="color: #7e7e7e"></i>
               </button>
               <input
                 type="number"
@@ -42,8 +42,8 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
                 v-model="item.qty"
                 @blur="plus(item)"
               />
-              <button class="plus border-0" @click="plus(item, `plus`)">
-                <i class="fa fa-plus"></i>
+              <button class="border-0" @click="plus(item, `plus`)">
+                <i class="fa fa-plus" style="color: #7e7e7e"></i>
               </button>
             </div>
           </td>

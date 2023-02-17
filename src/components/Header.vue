@@ -4,32 +4,17 @@ import { useHomePage } from "../stores/homepage.js";
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 import { onMounted } from "@vue/runtime-core";
-const { putCart, delCart, checkout, check, bottomLine } = useHomePage();
-const { on } = storeToRefs(useHomePage());
+import navigation from "./navigation.vue";
+const { putCart, delCart, checkout, check, bottomLine, open } = useHomePage();
+const { openCart, on, openNav, onNav } = storeToRefs(useHomePage());
 const { getCart } = useProductsSeries();
 const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
-const openCart = ref("");
-const open = () => {
-  on.value = !on.value;
-  if (on.value) {
-    openCart.value = "openCart";
-  } else {
-    openCart.value = "colseCart";
-  }
-};
-const hide = () => {
-  document.removeEventListener("click", show);
-};
 const show = () => {
-  document.addEventListener("click", (e) => {
-    var cart = document.querySelector(".cart");
-    var topCart = document.querySelector(".topCart");
-    var pay = document.querySelector(".pay");
-    var out = e.target;
-    if (!cart.contains(out) && !topCart.contains(out) && !pay.contains(out)) {
-      on.value = false;
-    }
-    hide();
+  document.addEventListener("click", () => {
+    openCart.value = "colseCart";
+    on.value = false;
+    openNav.value = "colseCart";
+    onNav.value = false;
   });
 };
 
@@ -41,7 +26,7 @@ onMounted(() => {
 
 <template>
   <header
-    class="d-flex justify-content-between position-relative"
+    class="d-flex justify-content-between"
     data-aos="fade-down"
     data-aos-easing="ease-out"
     data-aos-duration="2000"
@@ -49,19 +34,19 @@ onMounted(() => {
     <a href="#"
       ><img src="../assets/logo.png" alt="" class="w-100 h-100 ps-4"
     /></a>
-    <div class="pc">
+    <div class="pc d-none d-lg-block">
       <ul class="d-flex list-unstyled">
-        <li>
+        <li class="me-5">
           <router-link to="/" :class="bottomLine(1)" @click="check(1)"
             >首頁</router-link
           >
         </li>
-        <li>
+        <li class="mx-5">
           <router-link to="/product" :class="bottomLine(2)" @click="check(2)"
             >產品系列</router-link
           >
         </li>
-        <li>
+        <li class="mx-5">
           <router-link
             to="/inspiration"
             :class="bottomLine(3)"
@@ -69,7 +54,7 @@ onMounted(() => {
             >靈感</router-link
           >
         </li>
-        <li>
+        <li class="mx-5">
           <router-link
             to="/brandConcept"
             :class="bottomLine(4)"
@@ -77,7 +62,7 @@ onMounted(() => {
             >品牌理念</router-link
           >
         </li>
-        <li>
+        <li class="ms-5">
           <router-link
             to="/maintainance"
             :class="bottomLine(5)"
@@ -92,27 +77,27 @@ onMounted(() => {
         <i class="fa-solid fa-magnifying-glass fa-xl search"></i>
       </a>
       <a
-        href=""
-        @click.prevent="open"
+        href="javascript:;"
+        @click.stop="open(`cart`)"
         class="ms-4 position-relative text-decoration-none"
         style="color: #352b25"
-        ><i class="fa-solid fa-cart-shopping fa-xl"></i>
+      >
+        <i class="fa-solid fa-cart-shopping fa-xl"></i>
         <span
           class="dot position-absolute"
           v-if="cartData && cartData.length > 0"
         ></span>
       </a>
-      <a class="d-inline d-xl-none" style="color: #352b25"
+      <a
+        class="d-inline d-lg-none"
+        style="color: #352b25"
+        @click.stop="open(`nav`)"
         ><i class="fa-solid fa-bars fa-xl bars ms-4"></i
       ></a>
     </div>
   </header>
-  <div
-    class="position-absolute p-3 pt-0 cart"
-    :class="openCart"
-    id="cart"
-    v-if="on"
-  >
+  <!-- 購物車 -->
+  <div class="position-absolute p-3 pt-0 cart" :class="openCart" @click.stop>
     <h4 class="text-center mt-3 fs-6" v-if="cartData && !cartData.length > 0">
       購物車內尚未有商品
     </h4>
@@ -130,10 +115,14 @@ onMounted(() => {
           {{ item.qty }}&ensp;x&ensp;NT$&nbsp;{{ item.product.price }}
         </h4>
       </div>
-      <div class="icon d-flex align-items-center pe-2" @click="delCart(item)">
+      <div
+        class="icon d-flex align-items-center pe-2 trash"
+        @click="delCart(item)"
+      >
         <i class="fa-regular fa-trash-can fa-lg" role="button"></i>
       </div>
     </div>
+
     <div
       class="d-flex justify-content-between mt-2"
       v-if="cartData && cartData.length > 0"
@@ -150,6 +139,8 @@ onMounted(() => {
       訂單結帳
     </button>
   </div>
+  <!-- 選單 -->
+  <navigation />
   <!-- 彈出視窗 -->
   <div
     class="toast align-items-center position-fixed top-0 start-50 translate-middle-x mt-5"
@@ -187,18 +178,15 @@ onMounted(() => {
 header {
   height: 84px;
   font-size: 16px;
-
   .pc {
-    @include pc {
-      display: none;
-    }
     li {
+      text-align: center;
       a {
         color: #352b25;
         line-height: 84px;
         text-decoration: none;
-        margin-right: 80px;
         position: relative;
+
         &::after {
           content: " ";
           position: absolute;
@@ -229,20 +217,19 @@ header {
   }
 }
 .cart {
-  display: none;
   right: 0;
   z-index: 3;
   background-color: #ffffff;
-  backdrop-filter: blur(5px);
   border-radius: 0 0 8px 8px;
+  transform: translateX(120%);
   width: 20%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  transition: 0.8s;
   @include pc {
     width: 50%;
   }
   @include sm {
     width: 100%;
-    height: 100vh;
   }
   .top {
     position: relative;
@@ -264,13 +251,19 @@ header {
       padding-bottom: 25%;
       overflow: hidden;
     }
+    .trash {
+      transition: 0.3s;
+      &:hover {
+        color: #dd534a;
+      }
+    }
   }
 }
 .openCart {
-  display: block;
+  transform: translateX(0);
 }
 .closeCart {
-  display: none;
+  transform: translateX(120%);
 }
 .pay {
   box-sizing: border-box;
@@ -280,6 +273,10 @@ header {
   border-radius: 12px;
   background-color: #865031;
   color: #ffffff;
+  transition: 0.3s;
+  &:hover {
+    -webkit-filter: brightness(1.2);
+  }
 }
 .toast {
   z-index: 3;
