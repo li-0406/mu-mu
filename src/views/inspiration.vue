@@ -28,7 +28,7 @@ onMounted(() => {
             class="title mx-auto text-center"
             data-aos="fade-zoom-in"
             data-aos-easing="ease-in"
-            data-aos-duration="2000"
+            data-aos-duration="1000"
           >
             <h1 class="mb-0">INSPIRATION</h1>
             <p class="fs-3">靈感</p>
@@ -39,8 +39,8 @@ onMounted(() => {
             class="mx-auto text-center"
             data-aos="fade-zoom-in"
             data-aos-easing="ease-in"
-            data-aos-delay="300"
-            data-aos-duration="2000"
+            data-aos-delay="600"
+            data-aos-duration="1000"
           >
             <h2 class="fs-3">一切隨心，用心去感悟空間</h2>
             <h3 class="fs-6 fw-light lh-lg pt-3">

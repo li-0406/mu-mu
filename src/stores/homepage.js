@@ -8,7 +8,6 @@ const path = "woodbox";
 
 export const useHomePage = defineStore("homepage", () => {
   const { getCart } = useProductsSeries();
-  const spaceImg = ref("");
   const spaceImgs = ref([]);
   const line = ref(1);
   const num = ref(1);
@@ -22,7 +21,6 @@ export const useHomePage = defineStore("homepage", () => {
         axios
           .get(`${url}/api/${path}/products?category=客廳空間`)
           .then((res) => {
-            spaceImg.value = res.data.products[0].imageUrl;
             spaceImgs.value = res.data.products[0].imagesUrl;
           });
         line.value = item;
@@ -31,7 +29,6 @@ export const useHomePage = defineStore("homepage", () => {
         axios
           .get(`${url}/api/${path}/products?category=臥室空間`)
           .then((res) => {
-            spaceImg.value = res.data.products[0].imageUrl;
             spaceImgs.value = res.data.products[0].imagesUrl;
           });
         line.value = item;
@@ -40,7 +37,6 @@ export const useHomePage = defineStore("homepage", () => {
         axios
           .get(`${url}/api/${path}/products?category=廚房空間`)
           .then((res) => {
-            spaceImg.value = res.data.products[0].imageUrl;
             spaceImgs.value = res.data.products[0].imagesUrl;
           });
         line.value = item;
@@ -49,7 +45,6 @@ export const useHomePage = defineStore("homepage", () => {
         axios
           .get(`${url}/api/${path}/products?category=餐廳空間`)
           .then((res) => {
-            spaceImg.value = res.data.products[0].imageUrl;
             spaceImgs.value = res.data.products[0].imagesUrl;
           });
         line.value = item;
@@ -58,7 +53,6 @@ export const useHomePage = defineStore("homepage", () => {
         axios
           .get(`${url}/api/${path}/products?category=浴室空間`)
           .then((res) => {
-            spaceImg.value = res.data.products[0].imageUrl;
             spaceImgs.value = res.data.products[0].imagesUrl;
           });
         line.value = item;
@@ -67,7 +61,6 @@ export const useHomePage = defineStore("homepage", () => {
         axios
           .get(`${url}/api/${path}/products?category=商業空間`)
           .then((res) => {
-            spaceImg.value = res.data.products[0].imageUrl;
             spaceImgs.value = res.data.products[0].imagesUrl;
           });
         line.value = item;
@@ -132,7 +125,6 @@ export const useHomePage = defineStore("homepage", () => {
     }
   };
   return {
-    spaceImg,
     spaceImgs,
     changeSpace,
     checkSpace,

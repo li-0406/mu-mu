@@ -12,7 +12,7 @@ const getData = () => {
   axios.get(`${url}/api/${path}/products/all`).then((res) => {
     table.value = res.data.products[9];
     sofa.value = res.data.products[11];
-    small.value = res.data.products[35];
+    small.value = res.data.products[32];
   });
 };
 onMounted(() => {
@@ -31,10 +31,9 @@ onMounted(() => {
         class="col-12 d-sm-flex"
         data-aos="fade-right"
         data-aos-offset="0"
-        data-aos-easing="ease-in-out"
+        data-aos-easing="ease"
         data-aos-duration="1000"
         data-aos-once="true"
-        data-aos-delay="200"
       >
         <div class="position-relative classicPic">
           <img :src="table.imageUrl" class="w-100" />
@@ -54,7 +53,6 @@ onMounted(() => {
           data-aos-offset="0"
           data-aos-duration="1000"
           data-aos-once="true"
-          data-aos-delay="400"
         >
           <div class="classicText">
             <h2 class="fw-light">
@@ -68,10 +66,10 @@ onMounted(() => {
         class="col-12 d-sm-flex py-sm-5"
         data-aos="fade-left"
         data-aos-offset="0"
-        data-aos-easing="ease-in-out"
+        data-aos-easing="ease"
         data-aos-duration="1500"
         data-aos-once="true"
-        data-aos-delay="600"
+        data-aos-delay="400"
       >
         <div class="position-relative classicPic order-2">
           <img :src="sofa.imageUrl" class="w-100" />
@@ -91,7 +89,6 @@ onMounted(() => {
           data-aos-offset="0"
           data-aos-duration="1500"
           data-aos-once="true"
-          data-aos-delay="800"
         >
           <div class="classicText">
             <h2 class="fw-light">
@@ -105,10 +102,10 @@ onMounted(() => {
         class="col-12 d-sm-flex"
         data-aos="fade-right"
         data-aos-offset="0"
-        data-aos-easing="ease-in-out"
+        data-aos-easing="ease"
         data-aos-duration="1500"
         data-aos-once="true"
-        data-aos-delay="1000"
+        data-aos-delay="800"
       >
         <div class="position-relative classicPic">
           <img :src="small.imageUrl" class="w-100" />
@@ -128,12 +125,11 @@ onMounted(() => {
           data-aos-offset="0"
           data-aos-duration="1500"
           data-aos-once="true"
-          data-aos-delay="1200"
         >
           <div class="classicText">
             <h2 class="fw-light">
               生活小物&emsp;<span class="float-end float-sm-none"
-                >TISSUE BOX</span
+                >PHOTO FRAME</span
               >
             </h2>
             <h4>空間質感加分</h4>
@@ -216,6 +212,7 @@ onMounted(() => {
   border-radius: 12px;
   width: 30%;
   overflow: hidden;
+  height: 100%;
   img {
     transition: 1s;
   }

@@ -8,13 +8,13 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
 </script>
 <template>
   <div class="col-12 pt-2 d-none d-md-block">
-    <table class="table table align-middle" style="border-spacing: 10px">
+    <table class="table table align-middle w-100">
       <thead>
         <tr>
           <th scope="col">商品資料</th>
           <th scope="col">價格</th>
           <th scope="col" class="text-center">數量</th>
-          <th scope="col" colspan="sm-4">小計</th>
+          <th scope="col" colspan="2">小計</th>
         </tr>
       </thead>
       <tbody>
@@ -39,6 +39,7 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
               <input
                 type="number"
                 class="border-0 text-center"
+                readonly="readonly"
                 v-model="item.qty"
                 @blur="plus(item)"
               />
@@ -49,7 +50,7 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
           </td>
           <td>NT${{ item.total }}</td>
           <td>
-            <span @click="delCart(item)">
+            <span @click="delCart(item)" class="trash">
               <i class="fa-regular fa-trash-can fa-lg" role="button"></i>
             </span>
           </td>
@@ -107,6 +108,19 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
     @content;
   }
 }
+.load {
+  width: 100%;
+  height: 100%;
+  background-color: #a0674b;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  p {
+    color: #ffffff;
+  }
+}
 .num {
   input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -133,6 +147,12 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
   @include sm {
     width: 20%;
     padding-bottom: 20%;
+  }
+}
+.trash {
+  transition: 0.4s;
+  &:hover {
+    color: #dd534a;
   }
 }
 </style>

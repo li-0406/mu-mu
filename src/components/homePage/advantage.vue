@@ -3,8 +3,12 @@
   <div class="advantage">
     <div class="container">
       <div class="row">
-        <div class="col d-flex">
-          <div class="bg-white text-dark advantageBox py-4 px-4">
+        <div class="col">
+          <div
+            class="bg-white text-dark advantageBox py-4 px-4"
+            data-aos="flip-right"
+            data-aos-duration="1000"
+          >
             <div class="pic mx-auto">
               <img src="../../assets/homepage/expert.png" class="w-100" />
             </div>
@@ -17,7 +21,11 @@
         </div>
 
         <div class="col">
-          <div class="bg-white text-dark advantageBox py-4 px-4">
+          <div
+            class="bg-white text-dark advantageBox py-4 px-4"
+            data-aos="flip-right"
+            data-aos-duration="1500"
+          >
             <div class="pic mx-auto">
               <img src="../../assets/homepage/quality.png" class="w-100" />
             </div>
@@ -30,7 +38,11 @@
           </div>
         </div>
         <div class="col d-flex">
-          <div class="bg-white text-dark advantageBox py-4 px-4">
+          <div
+            class="bg-white text-dark advantageBox py-4 px-4"
+            data-aos="flip-right"
+            data-aos-duration="2000"
+          >
             <div class="pic mx-auto">
               <img src="../../assets/homepage/custom.png" class="w-100" />
             </div>

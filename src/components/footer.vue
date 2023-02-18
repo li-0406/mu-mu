@@ -51,35 +51,25 @@ onMounted(() => {});
         <h5 class="mt-5 mb-3">快速連結</h5>
         <ul class="list-unstyled d-flex justify-content-between">
           <li>
-            <router-link to="/" class="text-decoration-none text-reset fw-light"
-              >首頁</router-link
-            >
+            <router-link to="/" class="text-reset fw-light">首頁</router-link>
           </li>
           <li>
-            <router-link
-              to="/product"
-              class="text-decoration-none text-reset fw-light"
+            <router-link to="/product" class="text-reset fw-light"
               >產品系列</router-link
             >
           </li>
           <li>
-            <router-link
-              to="/inspiration"
-              class="text-decoration-none text-reset fw-light"
+            <router-link to="/inspiration" class="text-reset fw-light"
               >靈感</router-link
             >
           </li>
           <li>
-            <router-link
-              to="/brandConcept"
-              class="text-decoration-none text-reset fw-light"
+            <router-link to="/brandConcept" class="text-reset fw-light"
               >品牌理念</router-link
             >
           </li>
           <li>
-            <router-link
-              to="/maintainance"
-              class="text-decoration-none text-reset fw-light"
+            <router-link to="/maintainance" class="text-reset fw-light"
               >保養方式</router-link
             >
           </li>

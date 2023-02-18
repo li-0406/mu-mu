@@ -16,7 +16,7 @@ onMounted(() => {
           class="pic"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-duration="2000"
+          data-aos-duration="1000"
         ></div>
       </div>
       <div class="col-12 py-3">
@@ -24,8 +24,8 @@ onMounted(() => {
           class="fs-6 lh-lg"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-delay="1000"
-          data-aos-duration="2000"
+          data-aos-delay="500"
+          data-aos-duration="1000"
         >
           床頭櫃上不適合擺放盆栽，<br />
           植物早上會釋放出大量的二氧化碳，<br />

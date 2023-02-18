@@ -16,7 +16,7 @@ onMounted(() => {
           class="pic"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-duration="2000"
+          data-aos-duration="1000"
         ></div>
       </div>
       <div class="col-12 py-3">
@@ -24,8 +24,8 @@ onMounted(() => {
           class="fs-6 lh-lg"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-delay="1000"
-          data-aos-duration="2000"
+          data-aos-delay="500"
+          data-aos-duration="1000"
         >
           知名玩具公司"樂高"其實是由木製玩具起家的，<br />
           創始人原先是一名木匠，<br />

@@ -98,9 +98,11 @@ onMounted(() => {
   </header>
   <!-- 購物車 -->
   <div class="position-absolute p-3 pt-0 cart" :class="openCart" @click.stop>
-    <h4 class="text-center mt-3 fs-6" v-if="cartData && !cartData.length > 0">
-      購物車內尚未有商品
-    </h4>
+    <div class="hint" v-if="cartData && !cartData.length > 0">
+      <h4 class="text-center mt-3 fs-6">購物車內尚未有商品</h4>
+      <router-link to="/product" @click="open(`cart`)">前往購物</router-link>
+    </div>
+
     <div
       class="d-flex top justify-content-between py-3"
       v-for="item in cartData"
@@ -178,6 +180,7 @@ onMounted(() => {
 header {
   height: 84px;
   font-size: 16px;
+  background-color: #ffffff;
   .pc {
     li {
       text-align: center;
@@ -219,17 +222,35 @@ header {
 .cart {
   right: 0;
   z-index: 3;
-  background-color: #ffffff;
-  border-radius: 0 0 8px 8px;
+  background-color: #fcfaf2;
+  border-radius: 8px 0 0 8px;
   transform: translateX(120%);
   width: 20%;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   transition: 0.8s;
   @include pc {
     width: 50%;
   }
   @include sm {
     width: 100%;
+  }
+  .hint {
+    display: flex;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+      border: 1px solid #352b25;
+      color: #352b25;
+      padding: 12px 20px;
+      border-radius: 8px;
+      margin: 12px auto;
+      transition: 0.4s;
+      &:hover {
+        background-color: #352b25;
+        color: #ffffff;
+      }
+    }
   }
   .top {
     position: relative;

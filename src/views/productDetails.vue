@@ -28,14 +28,22 @@ const plus = (item) => {
 </script>
 <template>
   <div class="back">
+    <!-- 載入畫面 -->
     <div class="load" v-if="loading">
-      <i
-        class="fa-solid fa-chair fa-2x fa-fade m-auto"
-        style="color: #fff; --fa-animation-duration: 2s; --fa-fade-opacity: 0.1"
-      ></i>
+      <div class="m-auto text-center">
+        <i
+          class="fa-solid fa-chair fa-2x fa-fade mb-1"
+          style="
+            color: #fff;
+            --fa-animation-duration: 2s;
+            --fa-fade-opacity: 0.1;
+          "
+        ></i>
+        <p>商品載入中</p>
+      </div>
     </div>
     <div class="container pt-5">
-      <div class="row">
+      <div class="row gx-5">
         <div class="col-12">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -130,19 +138,23 @@ const plus = (item) => {
         <div class="col-12 pt-5">
           <h4 class="mb-0 likeTitle">You may also like</h4>
         </div>
-        <div
-          class="col-12 col-sm-6 col-md-3"
-          v-for="item in alosLike"
-          :key="item.id"
-        >
-          <div class="text-center p-sm-3">
+        <div class="col-6 col-md-3" v-for="item in alosLike" :key="item.id">
+          <div class="text-center card my-3">
             <div class="like" role="button">
               <router-link :to="`/${item.id}`" @click="details(item.id)">
                 <img :src="item.imageUrl" class="w-100" />
               </router-link>
             </div>
-            <h3 class="fs-6 pt-2 mb-1">{{ item.title }}</h3>
-            <h3 class="mb-4 fs-6">NT${{ item.price }}</h3>
+            <div>
+              <router-link
+                :to="`/${item.id}`"
+                @click="details(item.id)"
+                class="text-decoration-none"
+              >
+                <h3 class="fs-6 pt-2 mb-1">{{ item.title }}</h3>
+                <h3 class="fs-6">NT$ {{ item.price }}</h3>
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
@@ -173,7 +185,6 @@ const plus = (item) => {
 <style lang="scss" scoped>
 .back {
   background-color: #fff9f3;
-  // position: relative;
 }
 .load {
   width: 100%;
@@ -184,6 +195,10 @@ const plus = (item) => {
   top: 0;
   z-index: 99;
   display: flex;
+
+  p {
+    color: #ffffff;
+  }
 }
 .pic {
   overflow: hidden;
@@ -215,11 +230,26 @@ const plus = (item) => {
     color: #ffffff;
   }
 }
-.like {
-  height: 0;
-  padding-bottom: 70%;
+.card {
+  background-color: #ffffff;
+  border: none;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  border-radius: 12px;
   overflow: hidden;
+  .like {
+    height: 0;
+    padding-bottom: 70%;
+    overflow: hidden;
+
+    img {
+      transition: 1s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }
+
 .likeTitle {
   font-family: "Josefin Sans", sans-serif;
 }

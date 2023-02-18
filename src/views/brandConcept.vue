@@ -9,7 +9,12 @@ onMounted(() => {
 <template>
   <div class="container header">
     <div class="row">
-      <div class="col-12 pt-0 text">
+      <div
+        class="col-12 pt-0 text"
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in"
+        data-aos-duration="1000"
+      >
         <div class="logo mx-auto"></div>
         <div class="text-center">
           <h1 class="fs-4">日本家具的設計與職人精神</h1>
@@ -22,19 +27,24 @@ onMounted(() => {
             </figcaption>
           </figure>
           <p class="my-4">
-            日本家具以百年傳承之工藝為底蘊，設計簡約質樸<br />
-            透過師傅雙手，成就一個個富含故事與溫暖的實木家具
+            目木追求簡約實用，以優質天然木材精心製作出現代經典設計，<br />
+            品質為先，每件產品都經過嚴格品管。
           </p>
           <p>
-            目木期望傳遞日本職人的精神<br />
-            嚴選兼具原創設計及耐用的質感家具<br />
-            讓每個人都能輕鬆擁有 日式居家生活美學
+            我們也重視環保，使用綠色製造方式，確保美觀耐用的同時，對環境友善。<br />
+            為消費者提供高品質、美觀、實用的產品，為每個家庭帶來溫暖和舒適。<br />
           </p>
           <p class="my-4">我們不僅販售家具，更是延續樹木的第二生命🌳</p>
         </div>
       </div>
       <div class="col-12">
-        <div class="banner"></div>
+        <div
+          class="banner"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-duration="1000"
+          data-aos-delay="600"
+        ></div>
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@ onMounted(() => {
           class="pic"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-duration="2000"
+          data-aos-duration="1000"
         ></div>
       </div>
       <div class="col-12 py-3">
@@ -24,8 +24,8 @@ onMounted(() => {
           class="fs-6 lh-lg"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-delay="1000"
-          data-aos-duration="2000"
+          data-aos-delay="500"
+          data-aos-duration="1000"
         >
           茶几 ( 咖啡桌 ) 對於習慣在和室生活的日本人來說，<br />
           使用頻率可以說是非常高，<br />

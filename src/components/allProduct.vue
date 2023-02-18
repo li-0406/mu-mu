@@ -9,32 +9,35 @@ const { product, loading } = storeToRefs(useProductsSeries());
 <template>
   <div class="back pb-5">
     <div class="container">
-      <div class="row">
+      <div class="row gx-5">
         <div
-          class="col-12 col-sm-6 col-md-6 col-lg-4"
+          class="col-12 col-sm-6 col-md-6 col-lg-3"
           v-for="item in product"
           :key="item.id"
         >
-          <div class="productPic pt-4 p-md-2 pb-2 p-xl-5 pb-xl-2">
-            <router-link :to="`/${item.id}`">
-              <img :src="item.imageUrl" class="w-100" />
-            </router-link>
-          </div>
-          <div
-            class="productText d-flex justify-content-between px-md-2 px-xl-5"
-          >
-            <div class="name">
-              <h4 class="fs-5 fs-sm-1">{{ item.title }}</h4>
-              <h4 class="fs-5">NT$ {{ item.price }}</h4>
+          <div class="card mt-5">
+            <div class="productPic">
+              <router-link :to="`/${item.id}`">
+                <img :src="item.imageUrl" class="w-100" />
+              </router-link>
             </div>
-            <a
-              href="#"
-              class="d-block my-auto me-2"
-              @click.prevent="addCart(item)"
-              style="color: #352b25"
-            >
-              <i class="fa-solid fa-cart-plus fa-xl"></i>
-            </a>
+            <div class="productText d-flex justify-content-between ps-3 py-2">
+              <router-link :to="`/${item.id}`" class="text-decoration-none">
+                <div class="name">
+                  <h4 class="fs-6 fs-sm-1">{{ item.title }}</h4>
+                  <h4 class="fs-6 mb-0">NT$ {{ item.price }}</h4>
+                </div>
+              </router-link>
+
+              <a
+                href="#"
+                class="d-block my-auto pe-3"
+                @click.prevent="addCart(item)"
+                style="color: #352b25"
+              >
+                <i class="fa-solid fa-cart-plus fa-xl"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -67,18 +70,29 @@ const { product, loading } = storeToRefs(useProductsSeries());
 .back {
   position: relative;
   background-color: #fff9f3;
+  .card {
+    border: none;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 12px;
+  }
 }
 .productPic {
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
   a {
     display: block;
     overflow: hidden;
     height: 0;
-    padding-bottom: 70%;
-    img {
-      transition: 1s;
-      &:hover {
-        transform: scale(1.1);
-      }
+    padding-bottom: 80%;
+    position: relative;
+  }
+  img {
+    position: absolute;
+    height: 100%;
+    transition: 1s;
+    &:hover {
+      transform: scale(1.1);
     }
   }
 }

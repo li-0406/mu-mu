@@ -11,7 +11,12 @@ onMounted(() => {
   <div class="container header">
     <div class="row">
       <div class="col-12 d-flex position-relative pt-5">
-        <div class="title mx-auto text-center">
+        <div
+          class="title mx-auto text-center"
+          data-aos="fade-zoom-in"
+          data-aos-easing="ease-in"
+          data-aos-duration="1000"
+        >
           <h1 class="mb-0">MAINTAINANCE</h1>
           <p class="fs-3">保養方式</p>
         </div>

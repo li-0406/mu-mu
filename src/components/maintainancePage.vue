@@ -1,6 +1,12 @@
 <script setup></script>
 <template>
-  <div class="content py-5">
+  <div
+    class="content py-5"
+    data-aos="fade-zoom-in"
+    data-aos-easing="ease-in"
+    data-aos-duration="1000"
+    data-aos-delay="800"
+  >
     <div>
       <h3>
         <i class="fa-solid fa-circle fa-2xs"></i>
@@ -24,7 +30,13 @@
       </h3>
     </div>
   </div>
-  <div class="back"></div>
+  <div
+    class="back"
+    data-aos="fade-zoom-in"
+    data-aos-easing="ease-in"
+    data-aos-duration="1000"
+    data-aos-delay="1600"
+  ></div>
 </template>
 <style scoped lang="scss">
 .back {

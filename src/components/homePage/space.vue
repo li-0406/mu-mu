@@ -2,7 +2,7 @@
 import { storeToRefs } from "pinia";
 import { useHomePage } from "../../stores/homepage.js";
 const { changeSpace, checkSpace, check } = useHomePage();
-const { spaceImg, spaceImgs } = storeToRefs(useHomePage());
+const { spaceImgs } = storeToRefs(useHomePage());
 </script>
 <template>
   <div class="container space">
@@ -71,17 +71,14 @@ const { spaceImg, spaceImgs } = storeToRefs(useHomePage());
         <div
           id="carouselExampleControls"
           class="carousel slide carousel-fade pic"
-          data-bs-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img :src="spaceImg" class="d-block w-100 h-100" />
-            </div>
-            <div class="carousel-item">
-              <img :src="spaceImgs[0]" class="d-block w-100 h-100" />
-            </div>
-            <div class="carousel-item">
-              <img :src="spaceImgs[1]" class="d-block w-100 h-100" />
+            <div
+              class="carousel-item active"
+              v-for="item in spaceImgs"
+              :key="item"
+            >
+              <img :src="item" class="d-block w-100 h-100" />
             </div>
           </div>
           <button
