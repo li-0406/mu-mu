@@ -31,9 +31,7 @@ onMounted(() => {
     data-aos-easing="ease-out"
     data-aos-duration="2000"
   >
-    <a href="#"
-      ><img src="../assets/logo.png" alt="" class="w-100 h-100 ps-4"
-    /></a>
+    <a href="#" class="logo"> </a>
     <div class="pc d-none d-lg-block">
       <ul class="d-flex list-unstyled">
         <li class="me-5">
@@ -181,6 +179,13 @@ header {
   height: 84px;
   font-size: 16px;
   background-color: #ffffff;
+  .logo {
+    width: 5%;
+    background-image: url("../assets/logo.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
   .pc {
     li {
       text-align: center;
@@ -240,14 +245,14 @@ header {
     flex-direction: column;
     a {
       text-decoration: none;
-      border: 1px solid #352b25;
-      color: #352b25;
+      border: 1px solid #865031;
+      color: #865031;
       padding: 12px 20px;
       border-radius: 8px;
       margin: 12px auto;
       transition: 0.4s;
       &:hover {
-        background-color: #352b25;
+        background-color: #865031;
         color: #ffffff;
       }
     }

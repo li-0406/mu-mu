@@ -16,7 +16,7 @@ onMounted(() => {
           class="pic"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-duration="1000"
+          data-aos-duration="500"
         ></div>
       </div>
       <div class="col-12 py-3">
@@ -24,8 +24,8 @@ onMounted(() => {
           class="fs-6 lh-lg"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in"
-          data-aos-delay="500"
-          data-aos-duration="1000"
+          data-aos-delay="200"
+          data-aos-duration="500"
         >
           沙發是英文sofa的音譯，<br />
           源於阿拉伯語的soffah，<br />

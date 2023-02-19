@@ -19,8 +19,10 @@ export const usecheckOut = defineStore("checkout", () => {
     text: "",
   });
   const orderNum = ref();
+  const loading = ref(false);
 
   const plus = (item, text) => {
+    loading.value = true;
     switch (text) {
       case "plus":
         item.qty++;
@@ -35,6 +37,7 @@ export const usecheckOut = defineStore("checkout", () => {
     };
     axios.put(`${url}/api/${path}/cart/${item.id}`, { data }).then((res) => {
       getCart();
+      loading.value = false;
     });
   };
 
@@ -62,5 +65,6 @@ export const usecheckOut = defineStore("checkout", () => {
     userData,
     orderNum,
     backHome,
+    loading,
   };
 });

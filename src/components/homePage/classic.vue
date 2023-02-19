@@ -10,7 +10,7 @@ const sofa = ref({});
 const small = ref({});
 const getData = () => {
   axios.get(`${url}/api/${path}/products/all`).then((res) => {
-    table.value = res.data.products[9];
+    table.value = res.data.products[8];
     sofa.value = res.data.products[11];
     small.value = res.data.products[32];
   });
@@ -32,7 +32,7 @@ onMounted(() => {
         data-aos="fade-right"
         data-aos-offset="0"
         data-aos-easing="ease"
-        data-aos-duration="1000"
+        data-aos-duration="800"
         data-aos-once="true"
       >
         <div class="position-relative classicPic">
@@ -50,8 +50,7 @@ onMounted(() => {
           class="d-flex align-items-center flex-grow-1 title"
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
-          data-aos-offset="0"
-          data-aos-duration="1000"
+          data-aos-duration="800"
           data-aos-once="true"
         >
           <div class="classicText">
@@ -67,9 +66,8 @@ onMounted(() => {
         data-aos="fade-left"
         data-aos-offset="0"
         data-aos-easing="ease"
-        data-aos-duration="1500"
+        data-aos-duration="800"
         data-aos-once="true"
-        data-aos-delay="400"
       >
         <div class="position-relative classicPic order-2">
           <img :src="sofa.imageUrl" class="w-100" />
@@ -87,7 +85,7 @@ onMounted(() => {
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-offset="0"
-          data-aos-duration="1500"
+          data-aos-duration="800"
           data-aos-once="true"
         >
           <div class="classicText">
@@ -103,9 +101,8 @@ onMounted(() => {
         data-aos="fade-right"
         data-aos-offset="0"
         data-aos-easing="ease"
-        data-aos-duration="1500"
+        data-aos-duration="800"
         data-aos-once="true"
-        data-aos-delay="800"
       >
         <div class="position-relative classicPic">
           <img :src="small.imageUrl" class="w-100" />
@@ -123,7 +120,7 @@ onMounted(() => {
           data-aos="fade-zoom-in"
           data-aos-easing="ease-in-back"
           data-aos-offset="0"
-          data-aos-duration="1500"
+          data-aos-duration="800"
           data-aos-once="true"
         >
           <div class="classicText">
@@ -228,6 +225,7 @@ onMounted(() => {
   }
   @include mobile {
     width: 100%;
+    height: 60%;
   }
 }
 .classicText {

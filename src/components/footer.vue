@@ -1,25 +1,10 @@
-<script setup>
-import { onMounted, ref } from "@vue/runtime-core";
-const map = ref(null);
-
-const initMap = () => {
-  map.value = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-};
-onMounted(() => {});
-</script>
+<script setup></script>
 <template>
-  <footer class="container footer">
-    <div class="row">
+  <footer class="container">
+    <div class="row pt-3 footer">
+      <div class="col-12 topLine pb-3"></div>
       <div class="col-12 col-md-5 col-lg-6 order-2 order-md-1">
-        <ul class="list-unstyled">
-          <li>
-            <div class="logo">
-              <img src="../assets/logo.png" class="w-100" />
-            </div>
-          </li>
+        <ul class="list-unstyled mb-0 ps-0">
           <li class="mb-4">
             <h5>地址 address</h5>
             <p>台北市內湖區舊宗路一段128號</p>
@@ -28,32 +13,26 @@ onMounted(() => {});
             <h5>營業時間 opening time</h5>
             <p>周一至周日 10:00 - 19:00(採預約制)</p>
           </li>
-          <li class="mb-4">
+          <li class="mb-0">
             <h5>連絡方式 contact information</h5>
             <p class="mb-0">
               <i class="fa-solid fa-phone"></i>&ensp;02-82876844
             </p>
-            <p>
+            <p class="mb-0">
               <i class="fa-solid fa-envelope"></i>&ensp;future.design@gmail.com
             </p>
-          </li>
-          <li class="d-flex" style="color: rgba(53, 43, 37, 0.5)">
-            <i
-              class="me-4 fa-brands fa-square-facebook fa-xl icon"
-              role="button"
-            ></i>
-            <i class="me-4 fa-brands fa-line fa-xl" role="button"></i>
-            <i class="fa-brands fa-instagram fa-xl" role="button"></i>
           </li>
         </ul>
       </div>
       <div class="col-12 col-md-7 col-lg-6 order-1 order-md-1">
-        <h5 class="mt-5 mb-3">快速連結</h5>
-        <ul class="list-unstyled d-flex justify-content-between">
+        <h5 class="mb-3">快速連結</h5>
+        <ul
+          class="list-unstyled d-flex justify-content-between justify-content-sm-start"
+        >
           <li>
             <router-link to="/" class="text-reset fw-light">首頁</router-link>
           </li>
-          <li>
+          <li class="mx-sm-5 mx-md-4 mx-lg-5">
             <router-link to="/product" class="text-reset fw-light"
               >產品系列</router-link
             >
@@ -63,7 +42,7 @@ onMounted(() => {});
               >靈感</router-link
             >
           </li>
-          <li>
+          <li class="mx-sm-5 mx-md-4 mx-lg-5">
             <router-link to="/brandConcept" class="text-reset fw-light"
               >品牌理念</router-link
             >
@@ -74,23 +53,20 @@ onMounted(() => {});
             >
           </li>
         </ul>
-        <div class="map ratio ratio-21x9">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.2052533467563!2d121.57601114784678!3d25.061031456130724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab81417cf23d%3A0xd257a23dcf7fd985!2zMTE05Y-w5YyX5biC5YWn5rmW5Y2A6IiK5a6X6Lev5LiA5q61MTI46Jmf!5e0!3m2!1szh-TW!2stw!4v1675326060184!5m2!1szh-TW!2stw?key=AIzaSyBhP3IK9AsDGlluur69hvK0HOgEyoSL5jI&libraries=geometry&callback=initMap"
-            width="600"
-            height="450"
-            style="border: 0"
-            allowfullscreen=""
-            loading="lazy"
-            id="map"
-            referrerpolicy="no-referrer-when-downgrade"
-            class="w-100 h-100"
-          >
-          </iframe>
-        </div>
+        <h5 class="mt-5 mb-3">Follow Us</h5>
+        <ul class="ps-0">
+          <li class="d-flex" style="color: rgba(53, 43, 37, 0.5)">
+            <i
+              class="me-4 fa-brands fa-square-facebook fa-2xl icon"
+              role="button"
+            ></i>
+            <i class="me-4 fa-brands fa-line fa-2xl" role="button"></i>
+            <i class="fa-brands fa-instagram fa-2xl" role="button"></i>
+          </li>
+        </ul>
       </div>
       <div class="col-12 order-3">
-        <p class="footerText mx-auto text-center fw-light">
+        <p class="footerText mx-auto text-center fw-light mb-2">
           @2022,本網頁僅供個人作品集使用，無任何商業用途
         </p>
       </div>
@@ -99,9 +75,16 @@ onMounted(() => {});
 </template>
 <style lang="scss" scoped>
 .footer {
-  .logo {
-    width: 135px;
+  .topLine {
+    &::after {
+      content: "";
+      display: block;
+      border-top: 1px solid #ebebeb;
+      width: 100%;
+      top: 0;
+    }
   }
+
   li {
     font-size: 14px;
 
@@ -115,12 +98,13 @@ onMounted(() => {});
 
   .footerText {
     color: rgba(53, 43, 37, 0.5);
+    font-size: 14px;
     &::before {
       content: "";
       display: block;
       border-top: 1.5px solid rgba(53, 43, 37, 0.1);
       width: 100%;
-      margin: 12px 0;
+      margin: 8px 0;
     }
   }
 }

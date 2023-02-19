@@ -238,7 +238,7 @@ const plus = (item) => {
   overflow: hidden;
   .like {
     height: 0;
-    padding-bottom: 70%;
+    padding-bottom: 60%;
     overflow: hidden;
 
     img {

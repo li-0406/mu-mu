@@ -18,6 +18,7 @@ export const useProductsSeries = defineStore("productsSeries", () => {
   const cartData = ref({});
   const totlaPrice = ref(0);
   const loading = ref(false);
+  const loadingCart = ref(false);
   const changeProducts = (item) => {
     switch (item) {
       case 1:
@@ -115,10 +116,14 @@ export const useProductsSeries = defineStore("productsSeries", () => {
   };
   const details = (item) => {
     loading.value = true;
-
     axios.get(`${url}/api/${path}/product/${item}`).then((res) => {
       productPage.value = res.data.product;
-      mainPic.value = productPage.value.imagesUrl[0];
+
+      if (productPage.value.imagesUrl) {
+        mainPic.value = productPage.value.imagesUrl[0];
+      } else {
+        mainPic.value = productPage.value.imageUrl;
+      }
       like(productPage.value.category, productPage.value.title);
       productPage.value.price = toThousands(productPage.value.price);
       loading.value = false;
@@ -157,12 +162,14 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     mytoast.show();
   };
   const getCart = () => {
+    loadingCart.value = true;
     axios.get(`${url}/api/${path}/cart`).then((res) => {
       cartData.value = res.data.data.carts;
       totlaPrice.value = toThousands(res.data.data.total);
       cartData.value.forEach((item) => {
         item.product.price = toThousands(item.product.price);
         item.total = toThousands(item.total);
+        loadingCart.value = false;
       });
     });
   };
@@ -198,5 +205,6 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     getCart,
     toThousands,
     loading,
+    loadingCart,
   };
 });

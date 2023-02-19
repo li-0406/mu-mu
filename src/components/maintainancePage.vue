@@ -5,7 +5,7 @@
     data-aos="fade-zoom-in"
     data-aos-easing="ease-in"
     data-aos-duration="1000"
-    data-aos-delay="800"
+    data-aos-delay="400"
   >
     <div>
       <h3>
@@ -35,7 +35,7 @@
     data-aos="fade-zoom-in"
     data-aos-easing="ease-in"
     data-aos-duration="1000"
-    data-aos-delay="1600"
+    data-aos-delay="800"
   ></div>
 </template>
 <style scoped lang="scss">

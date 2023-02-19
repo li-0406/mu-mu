@@ -4,9 +4,16 @@ import { usecheckOut } from "../stores/checkOut.js";
 import { useProductsSeries } from "../stores/productSeries.js";
 import { storeToRefs } from "pinia";
 const { plus, delCart } = usecheckOut();
-const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
+const { cartData, totlaPrice, loadingCart } = storeToRefs(useProductsSeries());
 </script>
 <template>
+  <div class="load" v-if="loadingCart">
+    <div class="m-auto text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  </div>
   <div class="col-12 pt-2 d-none d-md-block">
     <table class="table table align-middle w-100">
       <thead>
@@ -111,7 +118,7 @@ const { cartData, totlaPrice } = storeToRefs(useProductsSeries());
 .load {
   width: 100%;
   height: 100%;
-  background-color: #a0674b;
+  background-color: rgba(255, 255, 255, 0.5);
   position: fixed;
   left: 0;
   top: 0;

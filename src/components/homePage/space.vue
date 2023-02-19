@@ -73,12 +73,14 @@ const { spaceImgs } = storeToRefs(useHomePage());
           class="carousel slide carousel-fade pic"
         >
           <div class="carousel-inner">
-            <div
-              class="carousel-item active"
-              v-for="item in spaceImgs"
-              :key="item"
-            >
-              <img :src="item" class="d-block w-100 h-100" />
+            <div class="carousel-item active">
+              <img :src="spaceImgs[0]" class="d-block w-100 h-100" />
+            </div>
+            <div class="carousel-item">
+              <img :src="spaceImgs[1]" class="d-block w-100 h-100" />
+            </div>
+            <div class="carousel-item">
+              <img :src="spaceImgs[2]" class="d-block w-100 h-100" />
             </div>
           </div>
           <button
