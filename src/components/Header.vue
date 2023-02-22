@@ -71,7 +71,7 @@ onMounted(() => {
       </ul>
     </div>
     <div class="pe-3 topCart d-flex">
-      <a href="" class="d-inline d-lg-none" style="color: #352b25">
+      <a class="d-inline d-lg-none" style="color: #352b25">
         <i class="fa-solid fa-magnifying-glass fa-xl search"></i>
       </a>
       <a
@@ -180,7 +180,7 @@ header {
   font-size: 16px;
   background-color: #ffffff;
   .logo {
-    width: 5%;
+    width: 84px;
     background-image: url("../assets/logo.png");
     background-position: center;
     background-repeat: no-repeat;

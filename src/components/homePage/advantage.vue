@@ -20,7 +20,7 @@
           </div>
         </div>
 
-        <div class="col">
+        <div class="col d-flex">
           <div
             class="bg-white text-dark advantageBox py-4 px-4"
             data-aos="flip-right"
