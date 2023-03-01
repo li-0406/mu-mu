@@ -166,6 +166,7 @@ export const useProductsSeries = defineStore("productsSeries", () => {
     axios.get(`${url}/api/${path}/cart`).then((res) => {
       cartData.value = res.data.data.carts;
       totlaPrice.value = toThousands(res.data.data.total);
+      loadingCart.value = false;
       cartData.value.forEach((item) => {
         item.product.price = toThousands(item.product.price);
         item.total = toThousands(item.total);
@@ -179,6 +180,7 @@ export const useProductsSeries = defineStore("productsSeries", () => {
       qty,
     };
     axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
+      console.log(cartData.value[0].product.title);
       getCart();
     });
     router.push("/checkout");
