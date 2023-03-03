@@ -180,10 +180,9 @@ export const useProductsSeries = defineStore("productsSeries", () => {
       qty,
     };
     axios.post(`${url}/api/${path}/cart`, { data }).then((res) => {
-      console.log(cartData.value[0].product.title);
+      router.push("/checkout");
       getCart();
     });
-    router.push("/checkout");
   };
   const toThousands = (num) => {
     return (num || 0).toString().replace(/(\d)(?=(?:\d{3})+$)/g, "$1,");
