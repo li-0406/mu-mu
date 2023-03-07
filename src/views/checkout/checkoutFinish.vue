@@ -2,14 +2,14 @@
 import { usecheckOut } from "../../stores/checkOut.js";
 import { useHomePage } from "../../stores/homepage";
 import { storeToRefs } from "pinia";
-import { onBeforeMount } from "@vue/runtime-core";
+import { onMounted } from "@vue/runtime-core";
 import axios from "axios";
 const url = "https://vue3-course-api.hexschool.io/v2";
 const path = "woodbox";
 const { orderNum, userData } = storeToRefs(usecheckOut());
 const { backHome } = usecheckOut();
 const { cartData, totlaPrice } = storeToRefs(useHomePage());
-onBeforeMount(() => {
+onMounted(() => {
   orderNum.value = JSON.parse(sessionStorage.getItem("orderNum"));
 });
 </script>
