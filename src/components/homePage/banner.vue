@@ -1,6 +1,6 @@
 <script setup></script>
 <template>
-  <div class="position-relative banner d-flex">
+  <div class="position-relative banner">
     <div
       data-aos="fade-zoom-in"
       data-aos-easing="ease"
@@ -8,7 +8,7 @@
       data-aos-duration="3000"
       data-aos-once="true"
     >
-      <img src="../../assets/homepage/desktop_kv.png" class="w-100" />
+      <img src="../../assets/homepage/desktop_kv.png" style="width: 100%" />
       <div class="container position-absolute bannerText">
         <div class="row">
           <div class="col">
